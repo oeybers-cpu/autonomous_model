@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limits of Autonomous Models of Academic Literacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Color Variables */
+            --primary: #4fc3f7;
+            --secondary: #29b6f6;
+            --accent: #0288d1;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --light: #f0f0f0;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --lighter-accent: #81d4fa;
+            --digital-purple: #cf40ff;
+            --royal-blue: #4169E1;
+            --royal-blue-light: #6c8eff;
+            --aqua-blue: #00FFFF;
+            --card-padding: 20px;
+            --card-gap: 25px;
+            
+            /* Font Variables */
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Exo 2', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+        
+        /* Grid Lines Background */
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Header Styles */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(10, 10, 20, 0.8);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .top-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            animation: pulseText 3s infinite alternate;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+        
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
+        
+        /* Navigation Styles */
+        .top-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .nav-link {
+            color: var(--digital-purple);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background: rgba(65, 105, 225, 0.1);
+            border: 1px solid var(--royal-blue);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(207, 64, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-link:hover {
+            background: rgba(65, 105, 225, 0.2);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
+            transform: translateY(-2px);
+            color: var(--light);
+            border-color: var(--royal-blue-light);
+        }
+        
+        /* Card Styles */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--card-gap);
+            margin: 30px 0;
+        }
+        
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: var(--card-padding);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(207, 64, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--digital-purple), var(--royal-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(207, 64, 255, 0.3);
+        }
+        
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .article-card h3 {
+            color: var(--digital-purple);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover .card-image {
+            transform: scale(1.03);
+        }
+        
+        /* Section Title */
+        .section-title {
+            color: var(--digital-purple);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            font-family: var(--font-heading);
+            text-align: center;
+        }
+        
+        /* Contact Card */
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 11.25px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
+        }
+        
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .contact-card h2 {
+            color: var(--digital-purple);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+        }
+        
+        /* Content Container */
+        .main-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 100px auto 0;
+        }
+
+        /* Full-width content card */
+        .full-width-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .full-width-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .full-width-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .full-width-card h2 {
+            color: var(--digital-purple);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: var(--font-heading);
+        }
+
+        .full-width-card p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .top-nav {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 1100px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .top-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .top-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav {
+                gap: 12px;
+            }
+            .nav-link {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .card-image {
+                height: 180px;
+            }
+            .top-header {
+                padding: 15px 10px;
+                flex-direction: column;
+                height: auto;
+            }
+            .top-header h1 {
+                font-size: 1.3rem;
+                max-width: 100%;
+                padding: 0 50px;
+                margin-top: 5px;
+            }
+            .top-nav {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 0 10px;
+            }
+            .nav-link {
+                padding: 12px 10px;
+                font-size: 0.85rem;
+            }
+            .contact-card {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            .contact-card h2 {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .article-card h3 {
+                font-size: 1.1rem;
+            }
+            .main-container {
+                margin: 130px auto 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    
+    <div class="top-header">
+        <h1>Limits of Autonomous Models of Academic Literacy</h1>
+    </div>
+
+    <div class="main-container">
+        <div class="top-nav">
+            <a href="#introduction" class="nav-link">Introduction</a>
+            <a href="#autonomous-models" class="nav-link">Autonomous Models</a>
+            <a href="#colonial-legacy" class="nav-link">Colonial Legacy</a>
+            <a href="#disciplinary-approach" class="nav-link">Solutions</a>
+        </div>
+
+        <div class="contact-card" id="introduction">
+            <h2><i class="fas fa-graduation-cap"></i> Introduction</h2>
+            <p>This website explores the critical limitations of autonomous models of academic literacy in post-apartheid higher education, particularly within the African context. Our focus is on developing students' capabilities to succeed in disciplines and specific fields of study by moving beyond decontextualized approaches toward context-specific, disciplinary literacy frameworks.</p>
+        </div>
+
+        <div class="full-width-card" id="autonomous-models">
+            <h2><i class="fas fa-book-open"></i> Understanding Autonomous Models of Literacy</h2>
+            <p>Autonomous models of academic literacy, also known as technical or neutral models, treat literacy as a set of decontextualized, cognitive, and technical skills. These models focus primarily on mastery of grammar, sentence-level rules, and standardized textual competencies without considering students' cultural backgrounds, identities, or indigenous knowledge systems.</p>
+            
+            <p>In the context of post-apartheid South African universities, this approach has contributed significantly to high student attrition rates and feelings of alienation among African students. The autonomous model fails to create inclusive academic spaces that recognize and integrate African epistemologies and the socio-epistemic identities of students.</p>
+            
+            <p>The fundamental problem with autonomous models lies in their assumption that literacy skills are universal and transferable across all contexts. This perspective ignores the reality that literacy practices are deeply embedded in social, cultural, and disciplinary contexts. When universities adopt these models, they inadvertently perpetuate exclusionary practices that disconnect students from their cultural identities and disciplinary knowledge.</p>
+        </div>
+
+        <h2 class="section-title" id="colonial-legacy">Colonial and Apartheid Educational Legacies</h2>
+        
+        <div class="articles-container">
+            <div class="article-card">
+                <h3><i class="fas fa-history"></i> Colonial Education Systems</h3>
+                <img src="african-students-library.jpg" alt="African students in library" class="card-image">
+                <p>Colonial education systems were designed to serve the interests of colonial powers, imposing Western-centric notions of literacy and knowledge production. These systems systematically marginalized indigenous knowledge systems and languages, creating educational frameworks that privileged European epistemologies over local ways of knowing.</p>
+                <p>The legacy of colonial education continues to influence contemporary higher education institutions across Africa, where Western academic traditions often dominate curriculum design and pedagogical approaches, leaving little room for indigenous knowledge integration.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-balance-scale"></i> Bantu Education Act Legacy</h3>
+                <img src="african-students-studying.jpg" alt="African students studying" class="card-image">
+                <p>The 1953 Bantu Education Act was one of apartheid's most devastating educational policies, designed to limit African educational opportunities and prepare Black South Africans for subordinate roles in society. This system deliberately provided inferior education to African students, creating lasting educational inequalities.</p>
+                <p>The effects of Bantu Education continue to reverberate in post-apartheid higher education, where many students enter universities with educational backgrounds that did not prepare them for the academic literacy demands of higher education, particularly when these demands are framed within autonomous models.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-users"></i> Student Experiences</h3>
+                <img src="african-students-collaboration.jpg" alt="African university students collaborating" class="card-image">
+                <p>African students in post-apartheid universities often experience academic literacy challenges that are misunderstood when viewed through autonomous model lenses. These challenges are frequently attributed to individual deficits rather than systemic issues related to the mismatch between students' cultural and linguistic backgrounds and institutional expectations.</p>
+                <p>Research shows that when students' cultural intelligences and indigenous knowledge systems are recognized and integrated into academic literacy development, their engagement and success rates improve significantly.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Institutional Challenges</h3>
+                <img src="african-lecture-hall.jpg" alt="African lecture hall" class="card-image">
+                <p>Higher education institutions that rely on autonomous models often struggle to address the diverse literacy needs of their student populations. These institutions may inadvertently perpetuate exclusionary practices by failing to recognize the cultural and linguistic resources that students bring to their academic studies.</p>
+                <p>The challenge is compounded when academic facilitators are not equipped with the knowledge and skills needed to implement culturally responsive pedagogical approaches that honor students' diverse backgrounds while developing their disciplinary literacy capabilities.</p>
+            </div>
+        </div>
+
+        <div class="full-width-card" id="disciplinary-approach">
+            <h2><i class="fas fa-lightbulb"></i> Moving Toward Context-Specific, Disciplinary Approaches</h2>
+            <p>The solution to the limitations of autonomous models lies in adopting ideological models of literacy that recognize literacy as culturally and contextually situated. These approaches acknowledge that different disciplines have their own literacy practices, conventions, and ways of constructing knowledge.</p>
+            
+            <p>Context-specific, disciplinary approaches to academic literacy development focus on helping students understand and master the specific literacy practices required within their chosen fields of study. Rather than treating literacy as a generic skill set, these approaches recognize that becoming literate in engineering requires different competencies than becoming literate in social work or medicine.</p>
+            
+            <p>Effective disciplinary literacy approaches also integrate students' cultural and linguistic resources as assets rather than deficits. They create opportunities for students to draw connections between their existing knowledge systems and the new disciplinary knowledge they are acquiring, fostering deeper understanding and engagement.</p>
+            
+            <p>Furthermore, these approaches require ongoing collaboration between academic literacy practitioners and disciplinary experts to ensure that literacy development is embedded within meaningful disciplinary contexts rather than treated as a separate, preparatory activity.</p>
+        </div>
+
+        <div class="contact-card">
+            <h2><i class="fas fa-forward"></i> The Path Forward</h2>
+            <p>Transforming academic literacy development in post-apartheid higher education requires a fundamental shift from autonomous to ideological models of literacy. This transformation involves recognizing the cultural and linguistic diversity of student populations as a resource for learning rather than a barrier to overcome.</p>
+            
+            <p>Institutions must invest in developing academic literacy frameworks that are responsive to the specific needs of their student populations while maintaining the rigor required for disciplinary success. This includes providing professional development for faculty and staff to implement culturally responsive pedagogical practices.</p>
+            
+            <p>Ultimately, the goal is to create inclusive academic environments where all students can develop the disciplinary literacy capabilities needed for success in their chosen fields while maintaining connections to their cultural identities and knowledge systems.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.article-card, .contact-card, .full-width-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
