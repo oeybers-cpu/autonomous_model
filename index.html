@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,6 +269,19 @@
             margin-bottom: 15px;
             border: 2px solid rgba(207, 64, 255, 0.3);
             transition: transform 0.3s ease;
+        }
+        
+        /* FIXED: Adjusted royalty image to show faces at top */
+        .royalty-image {
+            object-position: top !important;
+            height: 240px !important;
+        }
+        
+        /* FIXED: New horizontal image style for digital youth */
+        .horizontal-image {
+            height: 180px !important;
+            object-fit: cover;
+            object-position: center;
         }
         
         .article-card:hover .card-image {
@@ -711,7 +725,7 @@
                         <h3><i class="fas fa-landmark"></i> Linguistic Control in Pre-colonial Africa</h3>
                         <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/royal.png?raw=true" 
                              alt="Royal symbols and language in pre-colonial African kingdoms" 
-                             class="column-image">
+                             class="column-image royalty-image">
                         <p>In many pre-colonial African societies, linguistic hierarchies functioned as gatekeepers to symbolic and material resources. The concept of "proper" or "legitimate" speech was often assigned significant symbolic value by elites, determining who could participate in governance, religious ceremonies, and knowledge transmission. For instance, in the Great Zimbabwe civilization, specific dialects were associated with royal authority, while in pre-colonial Buganda, the Luganda language was tightly controlled as a marker of elite status.</p>
                         <p>Oral traditions, though vital for cultural transmission, frequently reinforced existing power structures by controlling which narratives and historical accounts were authorised and preserved by ruling groups. This selective preservation of history through controlled oral channels created what scholars term "authorized memory," shaping collective identity according to the interests of those in power.</p>
                         <p>The use of Ajami scripts (Arabic script adapted to local African languages) exemplifies complex multilingual power dynamics, where religious and administrative knowledge was often restricted to those literate in these specialized writing systems. This linguistic stratification demonstrates that the relationship between language, power, and access to knowledge is not merely a colonial imposition but has deeper historical roots in African societies themselves.</p>
@@ -727,6 +741,9 @@
                     
                     <div class="modern-context">
                         <h3><i class="fas fa-lightbulb"></i> Moving Forward</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/future%20digital%20youth.png?raw=true" 
+                             alt="Digital youth in South Africa" 
+                             class="column-image horizontal-image">
                         <p>Contemporary research increasingly recognises that academic literacy cannot be reduced to a set of transferable skills but must be understood as situated within specific knowledge communities. Approaches that treat literacy as a neutral skill set often overlook the complex ways in which academic communication is embedded within specific disciplinary communities and cultural contexts.</p>
                         <p>The recognition that academic literacy is inherently situated within specific communities challenges simplistic approaches to academic writing instruction. This understanding requires us to move beyond technical skills training toward approaches that help students navigate the complex literacy practices of their disciplines while drawing on their cultural resources as strengths.</p>
                         <p>Understanding the historical use of language as a tool of power in both pre-colonial and colonial contexts provides critical perspective for developing academic literacy approaches that acknowledge power dynamics while creating more inclusive educational spaces.</p>
@@ -885,6 +902,34 @@
             </div>
             <p>The limitations of autonomous models of academic literacy are particularly pronounced in post-apartheid African higher education contexts, where the legacy of colonial and apartheid education continues to create barriers for African students. Moving toward disciplinary approaches that integrate African epistemologies and recognise the cultural and contextual nature of literacy practices offers a path toward more inclusive and effective higher education.</p>
             <p>Contemporary research increasingly acknowledges the complex social dimensions of academic communication, highlighting how literacy practices are embedded within broader cultural and institutional frameworks rather than being merely transferable skills. This transformation requires sustained commitment from institutions, faculty, and policymakers to create educational environments that honour both academic rigour and cultural diversity, enabling all students to succeed while maintaining their cultural identities and contributing their unique perspectives to knowledge creation.</p>
+        </div>
+        
+        <!-- NEW: Street's Call to Action Section -->
+        <div class="full-width-card">
+            <h2><i class="fas fa-book"></i> Recommended Reading</h2>
+            <div class="article-card">
+                <h3><i class="fas fa-bullhorn"></i> Challenging autonomous models of literacy: Street's call to action</h3>
+                <div class="article-content">
+                    <div class="card-text">
+                        <p><strong>Author:</strong> Joanne Larson</p>
+                        <p>This article reviews Brian Street's (1995) book Social Literacies: Critical Approaches to Literacy Development, Ethnography, and Education in light of current debates in literacy and education. The essay discusses Street's analysis of current issues in the field of literacy with specific focus on his definitions of autonomous and ideological models of literacy and how the shift from autonomous to ideological models will transform literacy practices.</p>
+                        <p>The review concludes with a challenge to researchers to think specifically about how Street's work might impact their own research. This seminal work provides critical theoretical grounding for understanding why autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations and cultural contexts.</p>
+                        <div class="citation">
+                            <p><i class="fas fa-quote-left"></i> Street's ideological model of literacy challenges the dominant view of literacy as a neutral set of technical skills, arguing instead that literacy practices are always embedded in social contexts and power relations.</p>
+                        </div>
+                        <div class="article-meta">
+                            <span class="meta-tag">Literacy Theory</span>
+                            <span class="meta-tag">Critical Pedagogy</span>
+                            <span class="meta-tag">Power Relations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">
+                        <i class="fas fa-download"></i> Download Article
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
