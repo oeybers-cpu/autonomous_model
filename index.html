@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Literacies Model</title>
-    <meta name="description" content="Comprehensive exploration of Academic Literacy including theoretical frameworks, practical applications, and decolonized approaches to academic writing.">
-    <meta name="keywords" content="academic literacy, academic writing, decolonization, educational theory, ubuntu philosophy, multimodal communication, multiliteries, linguistics">
-    <meta name="author" content="Dr Oscar Eybers">
+    <title>Limits of Autonomous Models of Academic Literacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +12,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
         :root {
+            /* Color Variables */
             --primary: #4fc3f7;
             --secondary: #29b6f6;
             --accent: #0288d1;
@@ -30,11 +29,13 @@
             --aqua-blue: #00FFFF;
             --card-padding: 20px;
             --card-gap: 25px;
-            /* Sun variables */
-            --sun-color: #FFC107;
-            --sun-glow: #FFA000;
-            --sun-ray-color: #FFD700;
+            --nav-banner-height: 60px;
+            
+            /* Font Variables */
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Exo 2', sans-serif;
         }
+        
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
             color: var(--light);
@@ -42,23 +43,11 @@
             padding: 20px;
             position: relative;
             overflow-x: hidden;
-            font-family: 'Exo 2', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
         }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(41, 182, 246, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(2, 136, 209, 0.03) 0%, transparent 30%);
-            pointer-events: none;
-            z-index: -2;
-        }
+        
+        /* Grid Lines Background */
         .grid-lines {
             position: fixed;
             top: 0;
@@ -72,45 +61,25 @@
             pointer-events: none;
             z-index: -1;
         }
-        /* New top header with title - Fixed for mobile */
-        .top-header {
+        
+        /* NEW: Dedicated Navigation Banner */
+        .nav-banner {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(10, 10, 20, 0.8);
-            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
-            z-index: 1000;
+            height: var(--nav-banner-height);
+            background: rgba(5, 5, 12, 0.85);
             backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
         }
-        .top-header h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            animation: pulseText 3s infinite alternate;
-            text-align: center;
-            margin: 0 auto;
-            max-width: 70%;
-        }
-        @keyframes pulseText {
-            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
-            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
-        }
+        
+        /* Back Button - Inside Navigation Banner */
         .back-button-tab {
-            position: fixed;
-            top: 25px;
-            left: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--royal-blue);
@@ -135,15 +104,13 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        /* NEW: Contact button styling */
+        
+        /* Contact Button - Inside Navigation Banner */
         .contact-button-tab {
-            position: fixed;
-            top: 25px;
-            right: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
-            border: 1px solid var(--royal-blue);
-            color: var(--royal-blue);
+            border: 1px solid var(--digital-purple);
+            color: var(--digital-purple);
             padding: 10px 20px;
             border-radius: 8px;
             display: flex;
@@ -152,25 +119,58 @@
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 0 15px rgba(207, 64, 255, 0.3);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
         }
         .contact-button-tab:hover {
-            background: rgba(65, 105, 225, 0.2);
+            background: rgba(207, 64, 255, 0.2);
             transform: translateX(5px);
-            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        /* Main container */
-        .main-container {
+        
+        /* Header Styles */
+        .top-header {
+            position: fixed;
+            top: var(--nav-banner-height);
+            left: 0;
             width: 100%;
-            max-width: 1400px;
-            margin: 100px auto 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(10, 10, 20, 0.8);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            z-index: 999;
+            backdrop-filter: blur(10px);
         }
-        /* Top navigation links */
+        
+        .top-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            animation: pulseText 3s infinite alternate;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+        
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
+        
+        /* Navigation Styles */
         .top-nav {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -178,6 +178,7 @@
             margin-bottom: 40px;
             padding: 0 20px;
         }
+        
         .nav-link {
             color: var(--digital-purple);
             text-decoration: none;
@@ -194,6 +195,7 @@
             align-items: center;
             justify-content: center;
         }
+        
         .nav-link:hover {
             background: rgba(65, 105, 225, 0.2);
             box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
@@ -201,158 +203,15 @@
             color: var(--light);
             border-color: var(--royal-blue-light);
         }
-        /* Header with Sun Integration */
-        header {
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
-            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
-            margin-bottom: 30px;
-            border-radius: 0 0 15px 15px;
-            overflow: hidden;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(0, 0, 0, 0.7),
-                rgba(0, 0, 0, 0.7),
-                rgba(0, 0, 0, 0.7),
-                transparent);
-            animation: headerShine 8s infinite linear;
-            z-index: -1;
-        }
-        @keyframes headerShine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        /* Sun container */
-        .sun-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            width: 300px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-        }
-        .sun-core {
-            width: 120px;
-            height: 120px;
-            background: var(--sun-color);
-            border-radius: 50%;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 0 30px 12px var(--sun-glow);
-            animation: sun-pulse 8s infinite ease-in-out;
-        }
-        .sun-rays {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            z-index: 1;
-            background: repeating-conic-gradient(from 0deg, var(--sun-ray-color) 0deg 3deg, transparent 3deg 20deg);
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: ray-rotate 20s infinite linear, ray-pulse 4s infinite ease-in-out;
-            box-shadow: 0 0 20px 6px var(--sun-ray-color);
-        }
-        @keyframes sun-pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        @keyframes ray-rotate {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        @keyframes ray-pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
-        }
-        /* Header content */
-        .header-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .contact-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(207, 64, 255, 0.2);
-            border-radius: 11.25px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 20px auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-            z-index: 1;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
-        }
-        .contact-card:hover::before {
-            transform: scaleX(1);
-        }
-        .contact-card h2 {
-            color: var(--digital-purple);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .contact-card p {
-            color: #ddd;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        /* Improved Card Styles */
+        
+        /* Card Styles */
         .articles-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: var(--card-gap);
             margin: 30px 0;
         }
+        
         .article-card {
             background: var(--card-bg);
             border: 1px solid rgba(207, 64, 255, 0.2);
@@ -366,6 +225,7 @@
             overflow: hidden;
             height: 100%;
         }
+        
         .article-card::before {
             content: '';
             position: absolute;
@@ -379,13 +239,16 @@
             transition: transform 0.5s ease;
             z-index: 1;
         }
+        
         .article-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(207, 64, 255, 0.3);
         }
+        
         .article-card:hover::before {
             transform: scaleX(1);
         }
+        
         .article-card h3 {
             color: var(--digital-purple);
             font-size: 1.3rem;
@@ -393,23 +256,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: var(--font-heading);
         }
-        .article-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        /* Updated to allow text wrapping around the image */
-        .card-image-wrap {
-            float: right;
-            width: 40%;
-            height: auto;
-            margin: 0 0 15px 15px;
-            border-radius: 8px;
-            border: 2px solid rgba(207, 64, 255, 0.3);
-            transition: transform 0.3s ease;
-        }
+        
         .card-image {
             width: 100%;
             height: 220px;
@@ -420,290 +269,241 @@
             border: 2px solid rgba(207, 64, 255, 0.3);
             transition: transform 0.3s ease;
         }
+        
         .article-card:hover .card-image {
             transform: scale(1.03);
         }
-        .card-text {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-text p {
-            margin-bottom: 15px;
-            color: #ddd;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-        .card-footer {
-            background: rgba(207, 64, 255, 0.08);
-            border-top: 1px solid rgba(207, 64, 255, 0.2);
-            padding: 12px 15px;
-            border-radius: 0 0 8px 8px;
-            font-size: 0.85rem;
-            color: var(--lighter-accent);
-            margin-top: 15px;
-        }
-        .citation {
-            background: rgba(207, 64, 255, 0.15);
-            color: var(--primary);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(207, 64, 255, 0.3);
-            margin: 15px 0;
-        }
-        .article-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 10px 0;
-        }
-        .meta-tag {
-            background: rgba(207, 64, 255, 0.15);
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(207, 64, 255, 0.3);
-        }
-        .centered-card {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: center;
-        }
-        .centered-card > .article-card {
-            max-width: 700px;
-            width: 100%;
-        }
-        .content-section {
-            margin-bottom: 40px;
-        }
+        
+        /* Section Title */
         .section-title {
             color: var(--digital-purple);
             font-size: 1.6rem;
             margin-bottom: 25px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
-            font-family: 'Orbitron', sans-serif;
+            font-family: var(--font-heading);
             text-align: center;
         }
-        /* Hero GIF */
-        .hero-gif {
-            width: 220px;
-            height: 220px;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(207, 64, 255, 0.5);
-            border: 2px solid var(--digital-purple);
-            display: block;
-            margin: 0 auto;
-            object-fit: cover;
+        
+        /* Contact Card */
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 11.25px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
         }
-        .copyright {
-            text-align: center;
-            padding: 30px 0;
-            color: #777;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(207, 64, 255, 0.2);
-            margin-top: 40px;
-        }
-        /* NEW: Black and White Animated Communication Modes */
-        .modes-animation {
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin: 0 auto 20px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
         }
-        .modes-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
         }
-        .mode-item {
+        
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .contact-card h2 {
+            color: var(--digital-purple);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            padding: 12px;
+            gap: 10px;
+            font-family: var(--font-heading);
+        }
+        
+        /* Content Container */
+        .main-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: calc(var(--nav-banner-height) + 100px) auto 0;
+        }
+
+        /* Full-width content card */
+        .full-width-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
             position: relative;
-            opacity: 0;
-            transform: translateX(-50px);
-            animation: slideIn 0.8s forwards;
-            background: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .full-width-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .full-width-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .full-width-card h2 {
+            color: var(--digital-purple);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: var(--font-heading);
+        }
+
+        .full-width-card p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        /* Mobile Historical Cards - 50% smaller */
+        .mobile-historical-cards {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: calc(var(--card-gap) / 2);
+            margin: 15px 0;
+        }
+        
+        .mobile-historical-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
             border-radius: 6px;
-        }
-        .mode-item:nth-child(1) { animation-delay: 0.2s; }
-        .mode-item:nth-child(2) { animation-delay: 0.4s; }
-        .mode-item:nth-child(3) { animation-delay: 0.6s; }
-        .mode-item:nth-child(4) { animation-delay: 0.8s; }
-        .mode-item:nth-child(5) { animation-delay: 1.0s; }
-        .mode-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 2;
+            padding: calc(var(--card-padding) / 2);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 2.5px 7.5px rgba(207, 64, 255, 0.1);
             position: relative;
-            padding: 5px 10px;
-            color: white;
+            overflow: hidden;
         }
-        /* Visual mode animation */
-        .visual-mode::before {
+        
+        .mobile-historical-card h3 {
+            color: var(--digital-purple);
+            font-size: 0.65rem;
+            margin-bottom: 7.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-heading);
+        }
+        
+        .mobile-historical-image {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 7.5px;
+            border: 1px solid rgba(207, 64, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-historical-image.slave-image {
+            object-position: center 20%; /* Crops out bottom text */
+        }
+        
+        .mobile-historical-image.plantation-image {
+            object-position: center 40%;
+        }
+        
+        .mobile-historical-image.colossus-image {
+            object-position: center 50%;
+        }
+
+        /* Keyword Tabs Styles */
+        .keyword-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .keyword-tab {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue-light);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 8px rgba(65, 105, 225, 0.5);
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .keyword-tab::before {
             content: '';
             position: absolute;
-            left: 0;
+            top: 0;
+            left: -100%;
+            width: 100%;
             height: 100%;
-            width: 0;
-            background: rgba(255, 255, 255, 0.1);
-            animation: expandWidth 1s forwards;
-            animation-delay: 0.5s;
-            border-right: 2px solid #fff;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
-        .visual-mode::after {
-            content: '◯';
-            position: absolute;
-            right: 15px;
-            font-size: 1.2rem;
-            animation: pulse 1s infinite;
-            animation-delay: 1.5s;
-            color: white;
+        
+        .keyword-tab:hover::before {
+            left: 100%;
         }
-        /* Aural mode animation */
-        .aural-mode::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background: rgba(255, 255, 255, 0.1);
-            animation: expandWidth 1s forwards;
-            animation-delay: 0.7s;
-            border-right: 2px solid #fff;
+        
+        .keyword-tab:hover {
+            box-shadow: 0 0 12px rgba(65, 105, 225, 0.8);
+            transform: translateY(-2px);
         }
-        .aural-mode::after {
-            content: '♪';
-            position: absolute;
-            right: 15px;
-            font-size: 1.2rem;
-            animation: bounce 1s infinite;
-            animation-delay: 1.7s;
-            color: white;
-        }
-        /* Linguistic mode animation */
-        .linguistic-mode::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background: rgba(255, 255, 255, 0.1);
-            animation: expandWidth 1s forwards;
-            animation-delay: 0.9s;
-            border-right: 2px solid #fff;
-        }
-        .linguistic-mode::after {
-            content: '✎';
-            position: absolute;
-            right: 15px;
-            font-size: 1.2rem;
-            animation: write 1s infinite;
-            animation-delay: 1.9s;
-            color: white;
-        }
-        /* Gestural mode animation */
-        .gestural-mode::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background: rgba(255, 255, 255, 0.1);
-            animation: expandWidth 1s forwards;
-            animation-delay: 1.1s;
-            border-right: 2px solid #fff;
-        }
-        .gestural-mode::after {
-            content: '✋';
-            position: absolute;
-            right: 15px;
-            font-size: 1.2rem;
-            animation: gesture 1s infinite;
-            animation-delay: 2.1s;
-            color: white;
-        }
-        /* Spatial mode animation */
-        .spatial-mode::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background: rgba(255, 255, 255, 0.1);
-            animation: expandWidth 1s forwards;
-            animation-delay: 1.3s;
-            border-right: 2px solid #fff;
-        }
-        .spatial-mode::after {
-            content: '◻';
-            position: absolute;
-            right: 15px;
-            font-size: 1.2rem;
-            animation: spatial 1s infinite;
-            animation-delay: 2.3s;
-            color: white;
-        }
-        /* Animations */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
+        
+        /* Mobile keyword tabs */
+        @media (max-width: 600px) {
+            .keyword-tab {
+                padding: 4px 8px;
+                font-size: 0.6rem;
             }
         }
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        @keyframes write {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-15deg); }
-            75% { transform: rotate(15deg); }
-            100% { transform: rotate(0deg); }
-        }
-        @keyframes gesture {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(15deg); }
-            50% { transform: rotate(-15deg); }
-            75% { transform: rotate(5deg); }
-        }
-        @keyframes spatial {
-            0% { transform: rotate(0deg) scale(1); }
-            33% { transform: rotate(90deg) scale(1.2); }
-            66% { transform: rotate(180deg) scale(1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        /* Responsive Design Improvements */
+
+        /* Responsive Design */
         @media (max-width: 1200px) {
             .top-nav {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+        
         @media (max-width: 1100px) {
             .articles-container {
                 grid-template-columns: 1fr;
             }
         }
+        
         @media (max-width: 900px) {
             .top-nav {
                 grid-template-columns: repeat(2, 1fr);
@@ -711,26 +511,9 @@
             .top-header h1 {
                 font-size: 1.5rem;
             }
-            header {
-                min-height: 250px;
-            }
-            .sun-container {
-                width: 250px;
-                height: 250px;
-            }
-            .sun-core {
-                width: 100px;
-                height: 100px;
-            }
-            .sun-rays {
-                width: 250px;
-                height: 250px;
-            }
         }
+        
         @media (max-width: 768px) {
-            .header-image {
-                width: 70%;
-            }
             .top-nav {
                 gap: 12px;
             }
@@ -738,63 +521,36 @@
                 padding: 10px 12px;
                 font-size: 0.8rem;
             }
-            .mode-text {
-                font-size: 1rem;
-            }
-            .mode-item::after {
-                right: 10px;
-                font-size: 1rem;
-            }
         }
+        
         @media (max-width: 600px) {
             body {
                 padding: 15px;
             }
-            /* FIXED: Increased top value to prevent collision with header */
-            .back-button-tab {
-                top: 65px;
-                left: 15px;
-                padding: 8px 15px;
-                font-size: 0.8rem;
-                z-index: 1002;
+            
+            /* Responsive adjustments for the navigation banner */
+            .nav-banner {
+                height: 55px;
+                padding: 0 15px;
             }
-            /* FIXED: Increased top value to prevent collision with header */
+            
+            .back-button-tab,
             .contact-button-tab {
-                top: 65px;
-                right: 15px;
                 padding: 8px 15px;
                 font-size: 0.8rem;
-                z-index: 1002;
             }
+            
+            .top-header {
+                top: 55px;
+                padding: 12px 10px;
+            }
+            
+            .main-container {
+                margin: calc(55px + 100px) auto 0;
+            }
+            
             .card-image {
                 height: 180px;
-            }
-            .hero-gif {
-                width: 180px;
-                height: 180px;
-            }
-            /* Adjust sun for mobile */
-            .sun-container {
-                width: 200px;
-                height: 200px;
-            }
-            .sun-core {
-                width: 80px;
-                height: 80px;
-                box-shadow: 0 0 20px 8px var(--sun-glow);
-            }
-            .sun-rays {
-                width: 200px;
-                height: 200px;
-                box-shadow: 0 0 15px 4px var(--sun-ray-color);
-            }
-            header {
-                min-height: 220px;
-            }
-            .top-header {
-                padding: 15px 10px;
-                flex-direction: column;
-                height: auto;
             }
             .top-header h1 {
                 font-size: 1.3rem;
@@ -824,431 +580,257 @@
             .article-card h3 {
                 font-size: 1.1rem;
             }
-            .main-container {
-                margin: 130px auto 0;
+            
+            /* Mobile-specific styles */
+            .articles-container {
+                display: none;
             }
-            /* For mobile, revert to original layout without wrapping */
-            .card-image-wrap {
-                float: none;
-                width: 100%;
-                margin: 0 0 15px 0;
-            }
-            .mode-text {
-                font-size: 0.9rem;
-                letter-spacing: 0;
-            }
-            .mode-item::after {
-                right: 5px;
-                font-size: 0.9rem;
-            }
-        }
-        /* FIXED: Special handling for landscape mode on mobile */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .top-header {
-                padding: 10px 15px;
-                flex-direction: row;
-            }
-            .top-header h1 {
-                font-size: 1.2rem;
-                padding: 0;
-                margin-top: 0;
-            }
-            .back-button-tab {
-                top: 50px;
-                left: 15px;
-                padding: 6px 12px;
-            }
-            .contact-button-tab {
-                top: 50px;
-                right: 15px;
-                padding: 6px 12px;
-            }
-            .main-container {
-                margin: 70px auto 0;
-            }
-            header {
-                min-height: 200px;
-            }
-            .sun-container {
-                width: 150px;
-                height: 150px;
-            }
-            .sun-core {
-                width: 60px;
-                height: 60px;
-            }
-            .sun-rays {
-                width: 150px;
-                height: 150px;
-            }
-            .contact-card {
-                padding: 12px;
-                margin: 10px auto;
-            }
-            .contact-card h2 {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-            .contact-card p {
-                font-size: 0.9rem;
-            }
-            .top-nav {
-                margin-bottom: 20px;
-            }
-        }
-        /* FIXED: Special handling for very small devices */
-        @media (max-width: 360px) {
-            .top-header h1 {
-                font-size: 1.1rem;
-                padding: 0 40px;
-            }
-            .nav-link {
-                font-size: 0.75rem;
-                padding: 10px 8px;
-            }
-            .hero-gif {
-                width: 150px;
-                height: 150px;
-            }
-            .card-image {
-                height: 160px;
-            }
-            .back-button-tab {
-                top: 70px;
-                padding: 6px 12px;
-            }
-            .contact-button-tab {
-                top: 70px;
-                padding: 6px 12px;
-            }
-        }
-        /* FIXED: Special adjustment for portrait mode on small devices */
-        @media (max-width: 600px) and (orientation: portrait) {
-            .back-button-tab, 
-            .contact-button-tab {
-                top: 70px;
+            
+            .mobile-historical-cards {
+                display: grid;
             }
         }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
-    <!-- New top header with title -->
+    
+    <!-- NEW: Dedicated Navigation Banner -->
+    <div class="nav-banner">
+        <a href="https://oeybers-cpu.github.io/" class="back-button-tab" id="backButton">
+            <i class="fas fa-arrow-left"></i> Back to Academic Literacy Home
+        </a>
+        <div style="flex-grow: 1;"></div>
+        <a href="https://oeybers-cpu.github.io/contact/" class="contact-button-tab" id="contactButton">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </div>
+    
     <div class="top-header">
-        <h1>Academic Literacies Model</h1>
+        <h1>Limits of Autonomous Models of Academic Literacy</h1>
     </div>
-    <a href="#" class="back-button-tab" id="backButton">
-        <i class="fas fa-arrow-left"></i> Back
-    </a>
-    <!-- NEW: Contact button in top right -->
-    <a href="https://oeybers-cpu.github.io/contact/" class="contact-button-tab" id="contactButton">
-        <i class="fas fa-envelope"></i> Contact
-    </a>
+
     <div class="main-container">
-        <!-- Top Navigation Links -->
         <div class="top-nav">
-            <a href="https://www.researchgate.net/publication/47343136_The_Academic_Literacies_Model_Theorey_and_Applications" class="nav-link" target="_blank">
-                Theory and applications
-            </a>
-            <a href="https://acadlit-sz3ss6.manus.space/" class="nav-link" target="_blank">
-                Multilingual academic literacy
-            </a>
-            <a href="https://oeybers-cpu.github.io/autonomous_model/" class="nav-link" target="_blank">
-                Autonomous literacy model
-            </a>
-            <a href="https://oeybers-cpu.github.io/multimodal_grammar/" class="nav-link" target="_blank">
-                Multimodal academic literacy
-            </a>
-            <a href="https://oeybers-cpu.github.io/ubuntu/" class="nav-link" target="_blank">
-                Ubuntu and academic literacy
-            </a>
-            <a href="https://oeybers-cpu.github.io/Imhotep/" class="nav-link" target="_blank">
-                Imhotep and academic literacy
-            </a>
-            <a href="https://www.researchgate.net/publication/388081527_An_Inclusive_African_Theory_Of_Academic_Literacy" class="nav-link" target="_blank">
-                African theory of academic literacy
-            </a>
-            <a href="https://oeybers-cpu.github.io/Achebe/" class="nav-link" target="_blank">
-                Achebe and academic literacy
-            </a>
-            <a href="https://oeybers-cpu.github.io/ngugi/" class="nav-link" target="_blank">
-                Wa Thiong'o and academic literacy
-            </a>
-            <a href="https://oeybers-cpu.github.io/ancient_writers/" class="nav-link" target="_blank">
-                Ancient African Writing
-            </a>
-            <a href="https://oeybers-cpu.github.io/visual_semiotics/" class="nav-link" target="_blank">
-                African art semiotics
-            </a>
-            <!-- New tab for Academic literacy and economic empowerment -->
-            <a href="https://oeybers-cpu.github.io/AL_econ/" class="nav-link" target="_blank">
-                Academic literacy and economic empowerment
-            </a>
-            <!-- New link for Academic literacy from apartheid -->
-            <a href="https://oeybers-cpu.github.io/acadlit_apartheid/" class="nav-link" target="_blank">
-                Academic literacy from apartheid
-            </a>
+            <a href="#introduction" class="nav-link">Introduction</a>
+            <a href="#autonomous-models" class="nav-link">Autonomous Models</a>
+            <a href="#colonial-legacy" class="nav-link">Colonial Legacy</a>
+            <a href="#disciplinary-approach" class="nav-link">Solutions</a>
         </div>
-        <div class="container">
-            <header>
-                <!-- Digital Sun -->
-                <div class="sun-container">
-                    <div class="sun-core"></div>
-                    <div class="sun-rays"></div>
-                </div>
-                <div class="header-content">
-                    <!-- Removed the subtitle text -->
-                    <div class="contact-card">
-                        <h2><i class="fas fa-graduation-cap"></i> Key Finding</h2>
-                        <p>"Academic literacies foreground meaning-making, identity, power, and authority in academic writing, moving beyond skills and socialisation models."</p>
-                    </div>
-                </div>
-            </header>
-            <div class="content-section">
-                <h2 class="section-title">Theoretical Frameworks</h2>
-                <div class="articles-container">
-                    <!-- Card 1: Three Models -->
-                    <div class="article-card">
-                        <h3><i class="fas fa-chart-bar"></i> Three Models of Academic Literacy</h3>
-                        <div class="article-content">
-                            <img src="https://github.com/oeybers-cpu/a_lit_models/blob/main/1756310906.png?raw=true" alt="Three Models of Academic Literacy" class="card-image">
-                            <div class="card-text">
-                                <p><strong>Study Skills Model:</strong> Literacy is viewed as a set of discrete, transferable technical skills, such as grammar, punctuation, and spelling, applicable across contexts.</p>
-                                <p><strong>Academic Socialisation Model:</strong> Literacy is seen as contextual and disciplinary, requiring students to adopt the norms, genres, and conventions of specific academic communities.</p>
-                                <p><strong>Academic Literacies Model:</strong> Literacy is understood as socially situated and contested, involving negotiation of meaning, identity, and power within academic contexts.</p>
-                                <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> The academic literacies model recognises that writing is never just about skills or socialisation, but always involves questions of power, identity, and access.</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="meta-tag">Theory</span>
-                                    <span class="meta-tag">Pedagogy</span>
-                                    <span class="meta-tag">Epistemology</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            Each model offers different perspectives on how students engage with academic writing demands
-                        </div>
-                    </div>
-                    <!-- Card 2: Academic Literacies Model -->
-                    <div class="article-card">
-                        <h3><i class="fas fa-book-open"></i> Academic Literacies Model</h3>
-                        <div class="article-content">
-                            <img src="https://github.com/oeybers-cpu/acadlit_apartheid/blob/main/new%20al%202.png?raw=true" alt="Academic Literacies Model Framework" class="card-image">
-                            <div class="card-text">
-                                <p>The academic literacies model treats reading and writing as social practices that vary with context, culture and genre. It views student writing and learning as issues of epistemology and identities rather than of skill acquisition or academic socialisation alone.</p>
-                                <p>From the student point of view, a dominant feature of academic literacy practices is the requirement to switch writing styles and genres between settings, to deploy a repertoire of literacy practices appropriate to each context, and to handle the social meanings and identities each evokes.</p>
-                                <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> An academic literacies perspective views student writing and learning as issues of epistemology and identities rather than of skill acquisition or academic socialisation alone, although the perspectives are not mutually exclusive and individuals may move between them according to context and purpose.</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="meta-tag">Social Practice</span>
-                                    <span class="meta-tag">Epistemology</span>
-                                    <span class="meta-tag">Identity</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            Writing as a social practice involving meaning-making, identity, power and authority
-                        </div>
-                    </div>
-                    <!-- Card 3: Ubuntu Concept -->
-                    <div class="article-card">
-                        <h3><i class="fas fa-leaf"></i> Ubuntu Concept</h3>
-                        <div class="article-content">
-                            <img src="https://github.com/oeybers-cpu/Ubuntu_2/blob/main/ubuntu.png?raw=true" alt="Ubuntu Philosophy" class="card-image">
-                            <div class="card-text">
-                                <p>Ubuntu is a philosophical concept that emphasises our interconnectedness as human beings. The phrase "Umuntu ngumuntu ngabantu" (I am because we are) captures the essence of this worldview, which focuses on community, mutual caring, and shared humanity.</p>
-                                <p>In academic contexts, Ubuntu encourages collaborative learning, dialectic argumentation, and writing that acknowledges multiple perspectives and the communal nature of knowledge creation.</p>
-                                <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> Ubuntu philosophy transforms academic literacy from individual achievement to communal knowledge-building, where writing becomes an act of relational accountability.</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="meta-tag">Philosophy</span>
-                                    <span class="meta-tag">Community</span>
-                                    <span class="meta-tag">African Epistemology</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            "A person is a person through other persons" - African proverb
-                        </div>
-                    </div>
-                    <!-- Card 4: Achebe and Academic Literacy -->
-                    <div class="article-card">
-                        <h3><i class="fas fa-feather-alt"></i> Achebe and Academic Literacy</h3>
-                        <div class="article-content">
-                            <img src="https://bdc2020.o0bc.com/wp-content/uploads/2014/04/Obit-Achebe_001-scaled.jpg" alt="Chinua Achebe" class="card-image">
-                            <div class="card-text">
-                                <p>Achebe's literary works—especially "Things Fall Apart"—seek to reclaim African stories from colonial narratives that traditionally distorted or erased African histories and cultures. He believed in helping learners see themselves reflected in the curriculum and countering colonial stereotypes.</p>
-                                <p>This approach transforms academic literacy from mere skill acquisition to a process of cultural reclamation and identity formation.</p>
-                                <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> Reclaiming African stories from colonial distortions, providing counter-narratives to colonial historiography, and helping learners see themselves in the curriculum challenges Eurocentric perspectives in education.</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="meta-tag">Decolonisation</span>
-                                    <span class="meta-tag">Narrative</span>
-                                    <span class="meta-tag">Identity</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            Using literature to transform academic literacy into cultural reclamation
-                        </div>
-                    </div>
-                </div>
+
+        <div class="contact-card" id="introduction">
+            <h2><i class="fas fa-graduation-cap"></i> Introduction</h2>
+            <div class="keyword-tabs">
+                <div class="keyword-tab">Academic Literacy</div>
+                <div class="keyword-tab">Post-Apartheid</div>
+                <div class="keyword-tab">Disciplinary Approach</div>
             </div>
-            <!-- New section with three cards at the bottom -->
-            <div class="content-section">
-                <h2 class="section-title">Practical Applications</h2>
-                <div class="articles-container">
-                    <!-- Card 5: Multimodal Grammar -->
-                    <div class="article-card">
-                        <h3><i class="fas fa-project-diagram"></i> Multimodal Grammar</h3>
-                        <div class="article-content">
-                            <div class="card-text">
-                                <!-- Updated to wrap text around the image -->
-                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" 
-                                     alt="Digital Communication in Africa" 
-                                     class="card-image-wrap">
-                                <p>Communication is rarely just about words. Multimodality is the concept that we create meaning using a combination of different 'modes'. Think of a webpage, a film, or even a face-to-face conversation—they all blend text, images, sounds, and gestures to convey a message. Multimodal grammar is the framework we use to understand how these different modes work together to create a coherent whole.</p>
-                                <p>This approach recognises that every element—from the font of a text to the layout of a page—is a deliberate choice that contributes to the overall meaning. By understanding these choices, we become more effective communicators and more critical consumers of information in our increasingly digital world.</p>
-                                <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> Meaning is constructed through various channels. Social semiotics identifies five core modes through which we communicate: linguistic, visual, aural, gestural, and spatial.</p>
-                                </div>
-                                <div class="article-meta">
-                                    <span class="meta-tag">Visual</span>
-                                    <span class="meta-tag">Aural</span>
-                                    <span class="meta-tag">Spatial</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            Understanding how different modes create meaning
-                        </div>
-                    </div>
-                <!-- Card 6: Five Modes of Communication -->
-                <div class="article-card">
-                    <h3><i class="fas fa-sitemap"></i> Five Modes of Communication</h3>
-                    <div class="article-content">
-                        <div class="card-text">
-                            <!-- NEW: Replaced with black and white animated communication modes -->
-                            <div class="modes-animation">
-                                <ul class="modes-list">
-                                    <li class="mode-item visual-mode"><span class="mode-text">Visual</span></li>
-                                    <li class="mode-item aural-mode"><span class="mode-text">Aural</span></li>
-                                    <li class="mode-item linguistic-mode"><span class="mode-text">Linguistic</span></li>
-                                    <li class="mode-item gestural-mode"><span class="mode-text">Gestural</span></li>
-                                    <li class="mode-item spatial-mode"><span class="mode-text">Spatial</span></li>
-                                </ul>
-                            </div>
-                            <p><strong>Linguistic:</strong> The mode of words, both written and spoken. It covers vocabulary, grammar, and the structure of sentences and paragraphs.</p>
-                            <p><strong>Visual:</strong> Everything we can see. This includes images, colors, symbols, layout, and even the font used in a text.</p>
-                            <p><strong>Aural:</strong> The mode of sound. This encompasses spoken language, music, sound effects, and the qualities of a voice like tone and pitch.</p>
-                            <p><strong>Gestural:</strong> How we use our bodies to communicate. This includes facial expressions, hand gestures, and body language.</p>
-                            <p><strong>Spatial:</strong> The arrangement of elements in space. This applies to the layout of a page, the architecture of a room, or the proximity of people in a conversation.</p>
-                            <div class="citation">
-                                <p><i class="fas fa-quote-left"></i> Meaning is constructed through various channels. Social semiotics identifies five core modes through which we communicate. Each mode offers unique potentials for making meaning, and they often work in concert to create a rich, layered message.</p>
-                            </div>
-                            <div class="article-meta">
-                                <span class="meta-tag">Semiotics</span>
-                                <span class="meta-tag">Communication</span>
-                                <span class="meta-tag">Multimodality</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        The five core modes through which we communicate
-                    </div>
+            <p>This website explores the critical limitations of autonomous models of academic literacy in post-apartheid higher education, particularly within the African context. Our focus is on developing students' capabilities to succeed in disciplines and specific fields of study by moving beyond decontextualised approaches toward context-specific, disciplinary literacy frameworks.</p>
+        </div>
+
+        <div class="full-width-card" id="autonomous-models">
+            <h2><i class="fas fa-book-open"></i> Understanding Autonomous Models of Literacy</h2>
+            <div class="keyword-tabs">
+                <div class="keyword-tab">Decontextualized</div>
+                <div class="keyword-tab">Technical Skills</div>
+                <div class="keyword-tab">Universalist</div>
+            </div>
+            <p>Autonomous models of academic literacy, also known as technical or neutral models, treat literacy as a set of decontextualised, cognitive, and technical skills. These models focus primarily on mastery of grammar, sentence-level rules, and standardised textual competencies without considering students' cultural backgrounds, identities, or indigenous knowledge systems.</p>
+            
+            <p>In the context of post-apartheid South African universities, this approach has contributed significantly to high student attrition rates and feelings of alienation among African students. The autonomous model fails to create inclusive academic spaces that recognise and integrate African epistemologies and the socio-epistemic identities of students.</p>
+            
+            <p>The fundamental problem with autonomous models lies in their assumption that literacy skills are universal and transferable across all contexts. This perspective ignores the reality that literacy practices are deeply embedded in social, cultural, and disciplinary contexts. When universities adopt these models, they inadvertently perpetuate exclusionary practices that disconnect students from their cultural identities and disciplinary knowledge.</p>
+        </div>
+
+        <h2 class="section-title" id="colonial-legacy">Colonial and Apartheid Educational Legacies</h2>
+        
+        <!-- Regular cards for larger screens -->
+        <div class="articles-container">
+            <div class="article-card">
+                <h3><i class="fas fa-history"></i> Colonial Education Systems</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo1.png?raw=true" alt="Robot being programmed with academic literacy skills" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Programming</div>
+                    <div class="keyword-tab">Dehumanizing</div>
+                    <div class="keyword-tab">Cultural Erasure</div>
                 </div>
+                <p>This robot being 'programmed' reflects how the autonomous model treats students as empty vessels to be filled with technical literacy skills. Like machines following predetermined code, students are expected to mechanically apply grammar rules without understanding how academic literacy is shaped by disciplinary contexts and cultural identities. Street's critique reminds us that literacy is not neutral software but embedded in social practices - African students cannot be 'programmed' to succeed in academia without acknowledging their epistemological frameworks and indigenous knowledge systems.</p>
+                <p>The dehumanising parallel is stark: just as this robot lacks agency in its programming, autonomous models deny students' cultural positioning in knowledge production. In post-apartheid South African universities, this approach creates 'automated students' who can produce technically correct academic texts but remain disconnected from the deeper disciplinary reasoning and cultural contexts essential for true academic participation.</p>
             </div>
-            <div class="content-section">
-                <h2 class="section-title">Implementation Framework</h2>
-                <div class="articles-container">
-                   <div class="article-card">
-    <h3><i class="fas fa-exchange-alt"></i> Genre and Mode Switching</h3>
-    <div class="article-content">
-        <div class="card-text">
-            <img src="https://github.com/oeybers-cpu/a_lit_models/blob/main/al%20class.png?raw=true" 
-                 alt="Genre and Mode Switching" 
-                 class="card-image">
-            <p>Students are required to interact with different categories of text that we define as different genres and modes. Genres are types of text, both spoken and written, such as student discussions, written notes, letters, academic essays, etc.</p>
-            <p>The shift from free flowing thoughts/ideas to explicitness in discussion with others we identified as a shift to a different genre. As Gunther Kress has pointed out, it also involves a shift of 'mode'—from internal thought to external speech.</p>
-            <p>When students shift from talk and discussion to taking notes, new requirements come into play, such as the need for explicit attention to language structure, use of headings, and use of visual as well as language "modes" such as layout.</p>
-            <div class="citation">
-                <p><i class="fas fa-quote-left"></i> Each genre and mode had different qualities. In their educational histories, students had not always been made explicitly aware of these qualities associated with different genres as they moved between different genres in their school work.</p>
+
+            <div class="article-card">
+                <h3><i class="fas fa-balance-scale"></i> Bantu Education Act Legacy</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo2.png?raw=true" alt="Robotic arms performing isolated academic tasks" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Fragmentation</div>
+                    <div class="keyword-tab">Mechanical</div>
+                    <div class="keyword-tab">Assembly Line</div>
+                </div>
+                <p>Robotic arms working in precise, isolated movements mirror how the autonomous model fragments academic literacy into decontextualised skills. Students become like automated assembly lines, producing 'correct' academic texts without understanding the disciplinary discourse communities they're entering. Street argued that literacy isn't a transferable technical skill like robotic precision, but varies across contexts - African students need to navigate multiple epistemological frameworks, not just follow mechanical writing formulae.</p>
+                <p>This mechanical metaphor exposes the fundamental flaw: academic literacy isn't a standardised production process where identical inputs yield identical outputs. The autonomous model's assumption that literacy skills transfer universally across disciplines and cultures reduces students to interchangeable components in an educational factory, ignoring how knowledge construction differs across African epistemologies and Western academic traditions.</p>
             </div>
-            <div class="article-meta">
-                <span class="meta-tag">Genre</span>
-                <span class="meta-tag">Mode</span>
-                <span class="meta-tag">Transformation</span>
+
+            <div class="article-card">
+                <h3><i class="fas fa-users"></i> Student Experiences and Challenges</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo3.jpg?raw=true" alt="Factory automation replacing human judgment with mechanical precision" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Alienation</div>
+                    <div class="keyword-tab">Identity</div>
+                    <div class="keyword-tab">Cultural Navigation</div>
+                </div>
+                <p>Factory automation that replaces human judgment with mechanical precision parallels how autonomous literacy models reduce students to processing units for academic texts. This approach ignores that academic literacy requires cultural navigation, not just technical proficiency. Street's ideological model reminds us that students aren't robots executing code - they're agents negotiating identity in disciplinary spaces.</p>
+                <p>For African students in post-apartheid universities, the 'automated student' ideal demands they suppress their cultural identities to perform academic literacy tasks. This creates profound alienation, as students must become 'robots' who mechanically reproduce dominant academic discourses while disconnecting from their home literacies and indigenous knowledge systems. True academic literacy development requires recognising students as knowledge producers, not just information processors.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-robot"></i> Technological Solutions and Limitations</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757085895.png?raw=true" alt="Humanoid robot attempting academic tasks" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Automation</div>
+                    <div class="keyword-tab">Cultural Disconnect</div>
+                    <div class="keyword-tab">Knowledge Production</div>
+                </div>
+                <p>This humanoid robot attempting academic tasks symbolises the 'automated student' ideal of the autonomous model - technically proficient but culturally disconnected. Street critiqued this model for treating literacy as a neutral skill set that can be universally applied, ignoring how academic literacy is shaped by power, culture, and discipline-specific practices.</p>
+                <p>In post-apartheid South Africa, this 'robotic' approach fails African students by demanding they abandon cultural identities to perform academic literacy. The illusion of a 'neutral' technical skill set masks how autonomous models privilege Western academic traditions while framing African ways of knowing as deficits. Moving beyond this requires recognising that academic literacy isn't about becoming an 'automated student' but developing as a culturally situated knowledge producer who can navigate multiple epistemological frameworks.</p>
             </div>
         </div>
-    </div>
-    <div class="card-footer">
-        Understanding how students navigate between different communication contexts
-    </div>
-</div>
+
+        <!-- Smaller historical cards for mobile screens -->
+        <div class="mobile-historical-cards">
+            <div class="mobile-historical-card">
+                <h3><i class="fas fa-history"></i> Colonial Education Systems</h3>
+                <img src="https://www.historyireland.com/wp-content/uploads/2016/02/slaves-cutting-sugar-cane.jpg" alt="Enslaved people cutting sugar cane" class="mobile-historical-image slave-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Programming</div>
+                    <div class="keyword-tab">Dehumanizing</div>
+                    <div class="keyword-tab">Cultural Erasure</div>
                 </div>
+                <p>This image of enslaved labourers reveals how colonial education systems were built on dehumanising practices. Much like the autonomous literacy model treats students as empty vessels to be filled with technical skills, colonial education treated African knowledge as worthless, imposing Western epistemologies while systematically eradicating indigenous ways of knowing.</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Dr Oscar Eybers</p>
+
+            <div class="mobile-historical-card">
+                <h3><i class="fas fa-balance-scale"></i> Bantu Education Act Legacy</h3>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sugar_plantation_workers_1890.jpg/1200px-Sugar_plantation_workers_1890.jpg" alt="Sugar plantation workers" class="mobile-historical-image plantation-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Fragmentation</div>
+                    <div class="keyword-tab">Mechanical</div>
+                    <div class="keyword-tab">Assembly Line</div>
+                </div>
+                <p>The plantation system's division of labour mirrors how the Bantu Education Act created a hierarchy of knowledge. Just as plantation workers were denied access to management knowledge, African students were deliberately provided with inferior education designed to prepare them for subordinate roles in society, creating lasting educational inequalities that persist in post-apartheid universities.</p>
+            </div>
+
+            <div class="mobile-historical-card">
+                <h3><i class="fas fa-users"></i> Student Experiences and Challenges</h3>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Punch_Rhodes_Colossus.png/270px-Punch_Rhodes_Colossus.png" alt="Rhodes Colossus cartoon" class="mobile-historical-image colossus-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Alienation</div>
+                    <div class="keyword-tab">Identity</div>
+                    <div class="keyword-tab">Cultural Navigation</div>
+                </div>
+                <p>This 1892 cartoon depicting Cecil Rhodes straddling Africa symbolises the imperial mindset behind colonial education. Like the autonomous literacy model that demands students abandon their cultural identities, colonial education sought to replace African epistemologies with Western knowledge systems, creating the educational alienation that continues to affect African students in post-apartheid universities.</p>
             </div>
         </div>
+
+        <h2 class="section-title" id="disciplinary-approach">Moving Toward Disciplinary Approaches</h2>
+        
+        <div class="articles-container">
+            <div class="article-card">
+                <h3><i class="fas fa-lightbulb"></i> Context-Specific Literacy Development</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757089870.png?raw=true" alt="Assembly line showing systematic production process" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Discourse Communities</div>
+                    <div class="keyword-tab">Knowledge Construction</div>
+                    <div class="keyword-tab">Field-Specific</div>
+                </div>
+                <p>Disciplinary approaches to academic literacy recognise that different fields of study have unique discourse communities, writing conventions, and ways of constructing knowledge. Rather than treating literacy as a generic skill set, this approach emphasises the importance of understanding how knowledge is created, communicated, and evaluated within specific disciplines.</p>
+                <p>This approach acknowledges that students need to develop not just technical writing skills, but also an understanding of disciplinary epistemologies, research methodologies, and the social practices that shape knowledge production in their chosen fields of study.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-handshake"></i> Collaborative Learning Models</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/DigiCollab.png?raw=true" alt="Production line demonstrating collaborative work processes" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Coordination</div>
+                    <div class="keyword-tab">Integration</div>
+                    <div class="keyword-tab">Partnership</div>
+                </div>
+                <p>Effective academic literacy development requires collaborative approaches that bring together students, faculty, and literacy specialists. This collaborative model recognises that disciplinary experts and literacy specialists each bring essential knowledge to the process of supporting student development.</p>
+                <p>Just as modern production systems require coordination between different specialists and automated systems, effective academic literacy support requires coordination between content experts, literacy specialists, and students themselves, creating learning environments that honour both disciplinary knowledge and students' cultural identities.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-globe-africa"></i> Integrating African Epistemologies</h3>
+                <img src="https://img1.wsimg.com/isteam/ip/c3aca0fa-2f8b-4c53-99ed-a288deb61d46/3450e6a4-396d-4975-abd9-470bc5cb8b3a.jpg/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600" alt="Automated assembly line with human oversight" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Indigenous Knowledge</div>
+                    <div class="keyword-tab">Inclusion</div>
+                    <div class="keyword-tab">Epistemological Diversity</div>
+                </div>
+                <p>A truly inclusive approach to academic literacy in African contexts must actively integrate indigenous knowledge systems and African ways of knowing into the curriculum. This integration goes beyond superficial cultural references to encompass fundamental epistemological frameworks that recognise multiple ways of constructing and validating knowledge.</p>
+                <p>This approach challenges the dominance of Western academic traditions while maintaining academic rigour, creating spaces where students can draw on their cultural resources as strengths rather than deficits in their academic development.</p>
+            </div>
+
+            <div class="article-card">
+                <h3><i class="fas fa-cogs"></i> Systemic Institutional Change</h3>
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757090714.png?raw=true" alt="Advanced robotic systems in manufacturing" class="card-image">
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Transformation</div>
+                    <div class="keyword-tab">Policy</div>
+                    <div class="keyword-tab">Sustainability</div>
+                </div>
+                <p>Moving beyond autonomous models requires comprehensive institutional change that addresses not just pedagogical approaches but also assessment practices, curriculum design, faculty development, and institutional policies. This systemic approach recognises that sustainable change requires transformation at multiple levels of the institution.</p>
+                <p>Like the integration of advanced technologies in manufacturing that requires changes in worker training, management practices, and organisational culture, transforming academic literacy approaches requires coordinated changes across all aspects of the educational system to create truly inclusive and effective learning environments.</p>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <h2><i class="fas fa-lightbulb"></i> Conclusion</h2>
+            <div class="keyword-tabs">
+                <div class="keyword-tab">Inclusion</div>
+                <div class="keyword-tab">Transformation</div>
+                <div class="keyword-tab">Epistemological Justice</div>
+            </div>
+            <p>The limitations of autonomous models of academic literacy are particularly pronounced in post-apartheid African higher education contexts, where the legacy of colonial and apartheid education continues to create barriers for African students. Moving toward disciplinary approaches that integrate African epistemologies and recognise the cultural and contextual nature of literacy practices offers a path toward more inclusive and effective higher education.</p>
+            <p>This transformation requires sustained commitment from institutions, faculty, and policymakers to create educational environments that honour both academic rigour and cultural diversity, enabling all students to succeed while maintaining their cultural identities and contributing their unique perspectives to knowledge creation.</p>
+        </div>
     </div>
+
     <script>
-        // Ensure DOM is fully loaded before attaching event handlers
-        document.addEventListener('DOMContentLoaded', function() {
-            // Back button functionality - IMPROVED
-            const backButton = document.getElementById('backButton');
-            if (backButton) {
-                backButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Store current state with scroll position before navigating
-                    const currentState = {
-                        url: window.location.href,
-                        scrollY: window.scrollY
-                    };
-                    history.replaceState(currentState, document.title);
-                    // Go back in history
-                    if (history.length > 1) {
-                        history.back();
-                    } else {
-                        // Fallback if no history
-                        window.location.href = '/';
-                    }
-                });
-            }
-            // Store scroll position when navigating away
-            window.addEventListener('beforeunload', function() {
-                const currentState = {
-                    url: window.location.href,
-                    scrollY: window.scrollY
-                };
-                history.replaceState(currentState, document.title);
-            });
-            // Restore scroll position when returning to page
-            window.addEventListener('pageshow', function(event) {
-                if (event.persisted) {
-                    const state = history.state;
-                    if (state && state.scrollY !== undefined) {
-                        window.scrollTo(0, state.scrollY);
-                    }
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-            // Handle direct navigation to this page
-            if (performance.navigation.type === PerformanceNavigation.TYPE_BACK_FORWARD) {
-                const state = history.state;
-                if (state && state.scrollY !== undefined) {
-                    window.scrollTo(0, state.scrollY);
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-            }
-            // Handle orientation changes
-            window.addEventListener('orientationchange', function() {
-                setTimeout(function() {
-                    window.location.reload();
-                }, 300);
             });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.article-card, .contact-card, .full-width-card, .mobile-historical-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
     </script>
 </body>
