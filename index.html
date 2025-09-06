@@ -136,12 +136,11 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* NEW: Warning Banner */
+        /* NEW: Warning Banner - moved to far right */
         .warning-banner {
             position: fixed;
             top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 25px; /* Changed from center to right side */
             z-index: 1002;
             background: var(--warning-red);
             color: white;
@@ -164,15 +163,15 @@
         @keyframes pulseWarning {
             0% {
                 box-shadow: 0 0 20px var(--warning-glow);
-                transform: translateX(-50%) scale(1);
+                transform: translateX(0);
             }
             50% {
                 box-shadow: 0 0 30px rgba(255, 50, 50, 0.9);
-                transform: translateX(-50%) scale(1.08);
+                transform: translateX(-5px);
             }
             100% {
                 box-shadow: 0 0 20px var(--warning-glow);
-                transform: translateX(-50%) scale(1);
+                transform: translateX(0);
             }
         }
         
@@ -232,14 +231,15 @@
             margin-top: 140px;
         }
         
-        /* Navigation Sidebar */
+        /* Navigation Sidebar - positioned lower and stays with user as they scroll */
         .nav-sidebar {
             background: rgba(10, 10, 20, 0.7);
             border-radius: 12px;
             padding: 20px;
             height: fit-content;
             position: sticky;
-            top: 140px;
+            top: 160px; /* Increased from 140px to position lower */
+            z-index: 900; /* Ensure it stays above content but below headers */
             backdrop-filter: blur(10px);
             border: 1px solid rgba(207, 64, 255, 0.2);
         }
@@ -764,11 +764,17 @@
                 display: grid;
             }
             
-            /* Adjust warning banner for mobile */
+            /* Adjust warning banner for mobile - moved to far right */
             .warning-banner {
                 font-size: 0.85rem;
                 padding: 8px 18px;
                 top: 65px;
+                right: 15px;
+            }
+            
+            /* Adjust sidebar positioning for mobile */
+            .nav-sidebar {
+                top: 100px;
             }
         }
     </style>
@@ -781,7 +787,7 @@
         <a href="https://oeybers-cpu.github.io/" class="back-button-tab" id="backButton">
             <i class="fas fa-arrow-left"></i> Back to Academic Literacy Home
         </a>
-        <!-- NEW: Warning Banner -->
+        <!-- NEW: Warning Banner - now on the far right -->
         <div class="warning-banner">
             <i class="fas fa-exclamation-triangle"></i> Warning CC
         </div>
@@ -796,7 +802,7 @@
 
     <div class="main-container">
         <div class="page-layout">
-            <!-- Navigation Sidebar -->
+            <!-- Navigation Sidebar - now positioned lower and stays with user as they scroll -->
             <div class="nav-sidebar">
                 <div class="sidebar-nav">
                     <a href="#autonomous-models" class="sidebar-link active">
@@ -824,13 +830,6 @@
                         <div class="keyword-tab">Disciplinary Approach</div>
                     </div>
                     <p>This website explores the critical limitations of autonomous models of academic literacy in post-apartheid higher education, particularly within the African context. Our focus is on developing students' capabilities to succeed in disciplines and specific fields of study by moving beyond decontextualised approaches toward context-specific, disciplinary literacy frameworks that acknowledge the social and cultural dimensions of knowledge production.</p>
-                </div>
-                
-                <!-- NEW: Banner with 2 paragraphs about Imhotep -->
-                <div class="banner">
-                    <h2><i class="fas fa-landmark"></i> African Intellectual Traditions</h2>
-                    <p>Imhotep lived over 4,000 years ago during Egypt's Old Kingdom, specifically around the 27th to 26th century BCE. He held prominent roles in society, serving as chancellor to Pharaoh Djoser and as high priest of the sun god Ra at the sacred city of Heliopolis. His influence extended across both political and religious spheres, making him one of the most revered figures of his time. Widely recognized as a polymath, Imhotep demonstrated exceptional skill and innovation in multiple fields. As the architect of the Step Pyramid at Saqqara—the first monumental stone structure in history—he revolutionized Egyptian architecture. He was also a pioneering physician, often credited as the founder of Egyptian medicine, with his teachings influencing healing practices for centuries.</p>
-                    <p>The name Imhotep translates to "He who comes in peace," a reflection of his legacy as a bringer of wisdom, healing, and harmony. His contributions were so profound that he was later deified as the god of medicine and wisdom—one of the few mortals in ancient Egypt to be granted divine status. His enduring legacy continues to symbolize the depth and sophistication of African intellectual traditions. "Imhotep was deified after his death as the god of medicine and wisdom, one of the few mortals to achieve divine status in ancient Egypt."</p>
                 </div>
 
                 <div class="full-width-card" id="autonomous-models">
