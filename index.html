@@ -385,32 +385,67 @@
             line-height: 1.7;
         }
         
-        /* Bantu Education Image Specific Styling */
-        .bantu-education-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin: 20px 0;
-            border: 2px solid rgba(207, 64, 255, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        /* Two-column layout for the autonomous models card */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
         }
         
-        /* Historical Context Block */
-        .historical-context {
-            background: rgba(207, 64, 255, 0.1);
-            border-left: 4px solid var(--digital-purple);
-            padding: 15px;
-            border-radius: 0 4px 4px 0;
-            margin: 20px 0;
+        @media (max-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .historical-context h3 {
+        .column-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(207, 64, 255, 0.5), transparent);
+            transform: translateX(-50%);
+        }
+        
+        .column {
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .column h3 {
             color: var(--digital-purple);
-            margin-bottom: 10px;
+            margin: 15px 0 10px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .column-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .historical-context {
+            background: rgba(207, 64, 255, 0.08);
+            border-left: 3px solid var(--digital-purple);
+            padding: 12px;
+            border-radius: 0 4px 4px 0;
+            margin: 15px 0;
+        }
+        
+        .modern-context {
+            background: rgba(65, 105, 225, 0.08);
+            border-left: 3px solid var(--royal-blue-light);
+            padding: 12px;
+            border-radius: 0 4px 4px 0;
+            margin: 15px 0;
         }
 
         /* Mobile Historical Cards - 50% smaller */
@@ -663,21 +698,36 @@
                 <div class="keyword-tab">Technical Skills</div>
                 <div class="keyword-tab">Universalist</div>
             </div>
-            <p>Autonomous models of academic literacy, also known as technical or neutral models, treat literacy as a set of decontextualised, cognitive, and technical skills. These models focus primarily on mastery of grammar, sentence-level rules, and standardised textual competencies without considering students' cultural backgrounds, identities, or indigenous knowledge systems.</p>
             
-            <p>The Bantu Education Act of 1953, a cornerstone of apartheid policy in South Africa, implemented an autonomous model of literacy that deliberately limited black students' educational opportunities by emphasizing practical skills over academic development. This historical parallel reveals how autonomous models can function as instruments of systemic exclusion when they ignore the social, cultural, and political dimensions of literacy practices.</p>
-            
-            <img src="https://schoolrack.com/wp-content/uploads/2023/10/What-is-Bantu-Education-in-South-Africa-History-and-Education-Act-during-Apartheid-1024x576.jpg" alt="Bantu Education in South Africa during Apartheid" class="bantu-education-image">
-            
-            <div class="historical-context">
-                <h3><i class="fas fa-history"></i> Historical Connection: Bantu Education and Autonomous Models</h3>
-                <p>Both the Bantu Education system and contemporary autonomous literacy models share a fundamental flaw: they treat literacy as a neutral, transferable skill set disconnected from cultural and social contexts. The Bantu Education Act explicitly limited black South Africans' education to prepare them for subordinate roles, while modern autonomous models often inadvertently perpetuate exclusion by ignoring the cultural positioning of students within knowledge production.</p>
-                <p>As Verwoerd, the architect of Bantu Education, stated: "There is no place for [the African] in the European community above the level of certain forms of labour." Similarly, autonomous literacy models position academic literacy as a fixed set of technical skills that students must master to "fit into" academic communities, rather than recognising academic literacy as diverse, contested practices that students navigate across multiple contexts.</p>
+            <div class="two-column-layout">
+                <div class="column">
+                    <h3><i class="fas fa-history"></i> Historical Connection: Bantu Education</h3>
+                    <img src="https://schoolrack.com/wp-content/uploads/2023/10/What-is-Bantu-Education-in-South-Africa-History-and-Education-Act-during-Apartheid-1024x576.jpg" 
+                         alt="Bantu Education in South Africa during Apartheid" 
+                         class="column-image">
+                    <p>The Bantu Education Act of 1953, a cornerstone of apartheid policy in South Africa, implemented an autonomous model of literacy that deliberately limited black students' educational opportunities by emphasizing practical skills over academic development. This historical parallel reveals how autonomous models can function as instruments of systemic exclusion when they ignore the social, cultural, and political dimensions of literacy practices.</p>
+                    
+                    <div class="historical-context">
+                        <h3><i class="fas fa-landmark"></i> Historical Parallels</h3>
+                        <p>Both the Bantu Education system and contemporary autonomous literacy models share a fundamental flaw: they treat literacy as a neutral, transferable skill set disconnected from cultural and social contexts. The Bantu Education Act explicitly limited black South Africans' education to prepare them for subordinate roles, while modern autonomous models often inadvertently perpetuate exclusion by ignoring the cultural positioning of students within knowledge production.</p>
+                        <p>As Verwoerd, the architect of Bantu Education, stated: "There is no place for [the African] in the European community above the level of certain forms of labour." Similarly, autonomous literacy models position academic literacy as a fixed set of technical skills that students must master to "fit into" academic communities, rather than recognising academic literacy as diverse, contested practices that students navigate across multiple contexts.</p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <h3><i class="fas fa-university"></i> Contemporary Manifestations</h3>
+                    <img src="https://www.universityworldnews.com/wp-content/uploads/2022/09/University-students-in-South-Africa.jpg" 
+                         alt="University students in South Africa today" 
+                         class="column-image">
+                    <p>In post-apartheid South African universities, autonomous models of academic literacy continue to contribute to high student attrition rates and feelings of alienation among African students. The failure to create inclusive academic spaces that recognise and integrate African epistemologies and socio-epistemic identities stems from the same mindset that drove Bantu Education - the assumption that academic literacy is a universal, transferable skill set.</p>
+                    
+                    <div class="modern-context">
+                        <h3><i class="fas fa-lightbulb"></i> Moving Forward</h3>
+                        <p>Contemporary research increasingly recognises that academic literacy cannot be reduced to a set of transferable skills but must be understood as situated within specific knowledge communities. Approaches that treat literacy as a neutral skill set often overlook the complex ways in which academic communication is embedded within specific disciplinary communities and cultural contexts.</p>
+                        <p>The recognition that academic literacy is inherently situated within specific communities challenges simplistic approaches to academic writing instruction. This understanding requires us to move beyond technical skills training toward approaches that help students navigate the complex literacy practices of their disciplines while drawing on their cultural resources as strengths.</p>
+                    </div>
+                </div>
             </div>
-            
-            <p>In the context of post-apartheid South African universities, this approach has contributed significantly to high student attrition rates and feelings of alienation among African students. The autonomous model fails to create inclusive academic spaces that recognise and integrate African epistemologies and the socio-epistemic identities of students. Approaches that treat literacy as a neutral skill set often overlook the complex ways in which academic communication is embedded within specific disciplinary communities and cultural contexts.</p>
-            
-            <p>The fundamental problem with autonomous models lies in their assumption that literacy skills are universal and transferable across all contexts. This perspective ignores the reality that literacy practices are deeply embedded in social, cultural, and disciplinary contexts. When universities adopt these models, they inadvertently perpetuate exclusionary practices that disconnect students from their cultural identities and disciplinary knowledge. Contemporary research increasingly recognises that academic literacy cannot be reduced to a set of transferable skills but must be understood as situated within specific knowledge communities.</p>
         </div>
 
         <h2 class="section-title" id="colonial-legacy">Colonial and Apartheid Educational Legacies</h2>
