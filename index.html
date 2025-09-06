@@ -14,7 +14,7 @@
         }
         
         :root {
-            /* Colour Variables */
+            /* Color Variables - Updated with exact specifications */
             --primary: #4fc3f7;
             --secondary: #29b6f6;
             --accent: #0288d1;
@@ -31,9 +31,14 @@
             --card-gap: 25px;
             --nav-banner-height: 60px;
             
-            /* Warning colours */
-            --warning-red: #ff0000;
-            --warning-glow: #ff3333;
+            /* Sun variables */
+            --sun-color: #FFC107;
+            --sun-glow: #FFA000;
+            --sun-ray-color: #FFD700;
+            
+            /* Warning colors */
+            --warning-red: #ff4444;
+            --warning-glow: #ff6666;
             
             /* Font Variables */
             --font-heading: 'Orbitron', sans-serif;
@@ -42,7 +47,7 @@
         
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
-            colour: var(--light);
+            color: var(--light);
             min-height: 100vh;
             padding: 20px;
             position: relative;
@@ -51,7 +56,7 @@
             line-height: 1.6;
         }
         
-        /* Grid Lines Background */
+        /* Grid Lines Background - Fixed with proper contrast */
         .grid-lines {
             position: fixed;
             top: 0;
@@ -77,7 +82,7 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex;
-            align-items: centre;
+            align-items: center;
             padding: 0 25px;
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
         }
@@ -87,11 +92,11 @@
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--royal-blue);
-            colour: var(--royal-blue);
+            color: var(--royal-blue);
             padding: 10px 20px;
             border-radius: 8px;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -105,7 +110,7 @@
             background: rgba(65, 105, 225, 0.2);
             transform: translateX(-5px);
             box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
-            colour: var(--light);
+            color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
@@ -114,11 +119,11 @@
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--digital-purple);
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             padding: 10px 20px;
             border-radius: 8px;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -132,7 +137,7 @@
             background: rgba(207, 64, 255, 0.2);
             transform: translateX(5px);
             box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
-            colour: var(--light);
+            color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
@@ -140,14 +145,14 @@
         .warning-banner {
             position: fixed;
             top: 25px;
-            right: 25px; /* Changed from centre to right side */
+            right: 25px; /* Changed from center to right side */
             z-index: 1002;
             background: var(--warning-red);
-            colour: white;
+            color: white;
             padding: 10px 25px;
             border-radius: 8px;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 12px;
             cursor: default;
             transition: all 0.3s ease;
@@ -166,7 +171,7 @@
                 transform: translateX(0);
             }
             50% {
-                box-shadow: 0 0 30px rgba(255, 50, 50, 0.9);
+                box-shadow: 0 0 30px rgba(255, 86, 86, 0.9);
                 transform: translateX(-5px);
             }
             100% {
@@ -192,8 +197,8 @@
             left: 0;
             width: 100%;
             display: flex;
-            justify-content: centre;
-            align-items: centre;
+            justify-content: center;
+            align-items: center;
             padding: 15px 20px;
             background: rgba(10, 10, 20, 0.8);
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
@@ -206,14 +211,14 @@
             background: linear-gradient(90deg, var(--primary), var(--digital-purple));
             -webkit-background-clip: text;
             background-clip: text;
-            colour: transparent;
+            color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
             font-family: var(--font-heading);
             font-weight: 700;
             animation: pulseText 3s infinite alternate;
-            text-align: centre;
+            text-align: center;
             margin: 0 auto;
             max-width: 70%;
         }
@@ -233,7 +238,7 @@
         
         /* Navigation Sidebar - positioned lower and stays with user as they scroll */
         .nav-sidebar {
-            background: rgba(10, 10, 20, 0.7);
+            background: var(--card-bg);
             border-radius: 12px;
             padding: 20px;
             height: fit-content;
@@ -251,7 +256,7 @@
         }
         
         .sidebar-link {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             text-decoration: none;
             padding: 12px 15px;
             border-radius: 8px;
@@ -262,7 +267,7 @@
             font-weight: 500;
             text-shadow: 0 0 5px rgba(207, 64, 255, 0.5);
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 10px;
         }
         
@@ -270,7 +275,7 @@
             background: rgba(65, 105, 225, 0.2);
             box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
             transform: translateX(5px);
-            colour: var(--light);
+            color: var(--light);
             border-color: var(--royal-blue-light);
         }
         
@@ -333,11 +338,11 @@
         }
         
         .article-card h3 {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             font-size: 1.3rem;
             margin-bottom: 15px;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 10px;
             font-family: var(--font-heading);
         }
@@ -346,7 +351,7 @@
             width: 100%;
             height: 180px; /* Consistent height for all images */
             object-fit: cover;
-            object-position: centre 30%;
+            object-position: center 30%;
             border-radius: 8px;
             margin-bottom: 15px;
             border: 2px solid rgba(207, 64, 255, 0.3);
@@ -363,10 +368,10 @@
         .horizontal-image {
             height: 180px !important;
             object-fit: cover;
-            object-position: centre;
+            object-position: center;
         }
         
-        /* FIXED: African epistemology image to be centred in the card */
+        /* FIXED: African epistemology image to be centered in the card */
         .epistemology-card {
             display: flex;
             flex-direction: column;
@@ -376,8 +381,8 @@
         
         .epistemology-image-container {
             display: flex;
-            justify-content: centre;
-            align-items: centre;
+            justify-content: center;
+            align-items: center;
             width: 100%;
             margin: 15px 0;
         }
@@ -397,13 +402,13 @@
         
         /* Section Title */
         .section-title {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             font-size: 1.6rem;
             margin-bottom: 25px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
             font-family: var(--font-heading);
-            text-align: centre;
+            text-align: center;
         }
         
         /* Contact Card */
@@ -446,11 +451,11 @@
         }
         
         .contact-card h2 {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             margin-bottom: 15px;
             font-size: 1.3rem;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 10px;
             font-family: var(--font-heading);
         }
@@ -495,7 +500,7 @@
         }
 
         .full-width-card h2 {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             font-size: 1.5rem;
             margin-bottom: 20px;
             font-family: var(--font-heading);
@@ -504,6 +509,7 @@
         .full-width-card p {
             margin-bottom: 15px;
             line-height: 1.7;
+            color: var(--light);
         }
         
         /* Two-column layout for the autonomous models card */
@@ -535,10 +541,10 @@
         }
         
         .column h3 {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             margin: 15px 0 10px;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 8px;
             font-size: 1.2rem;
         }
@@ -591,11 +597,11 @@
         }
         
         .mobile-historical-card h3 {
-            colour: var(--digital-purple);
+            color: var(--digital-purple);
             font-size: 0.65rem;
             margin-bottom: 7.5px;
             display: flex;
-            align-items: centre;
+            align-items: center;
             gap: 5px;
             font-family: var(--font-heading);
         }
@@ -611,15 +617,15 @@
         }
         
         .mobile-historical-image.slave-image {
-            object-position: centre 20%; /* Crops out bottom text */
+            object-position: center 20%; /* Crops out bottom text */
         }
         
         .mobile-historical-image.plantation-image {
-            object-position: centre 40%;
+            object-position: center 40%;
         }
         
         .mobile-historical-image.colossus-image {
-            object-position: centre 50%;
+            object-position: center 50%;
         }
 
         /* Keyword Tabs Styles */
@@ -633,7 +639,7 @@
         .keyword-tab {
             background: rgba(20, 20, 30, 0.8);
             border: 1px solid var(--royal-blue);
-            colour: var(--royal-blue-light);
+            color: var(--royal-blue-light);
             padding: 6px 12px;
             border-radius: 4px;
             font-size: 0.7rem;
@@ -673,6 +679,53 @@
                 padding: 4px 8px;
                 font-size: 0.6rem;
             }
+        }
+
+        /* Footer Navigation Buttons */
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 15px 0;
+        }
+        
+        .footer-button {
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .footer-button:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-button.top {
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--digital-purple);
+            color: var(--digital-purple);
+        }
+        
+        .footer-button.top:hover {
+            background: rgba(207, 64, 255, 0.2);
+            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
+            color: var(--light);
         }
 
         /* Responsive Design */
@@ -782,6 +835,12 @@
             .nav-sidebar {
                 top: 100px;
             }
+            
+            /* Footer navigation for mobile */
+            .footer-nav {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -790,8 +849,9 @@
     
     <!-- NEW: Dedicated Navigation Banner -->
     <div class="nav-banner">
-        <a href="https://oeybers-cpu.github.io/" class="back-button-tab" id="backButton">
-            <i class="fas fa-arrow-left"></i> Back to Academic Literacy Home
+        <!-- Fixed home button linking to correct URL -->
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="back-button-tab" id="homeButton">
+            <i class="fas fa-home"></i> Home
         </a>
         <!-- NEW: Warning Banner - now on the far right -->
         <div class="warning-banner">
@@ -1059,13 +1119,24 @@
                         <p style="margin-bottom: 10px; font-size: 0.85rem;">This review of Street's work highlights how autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations.</p>
                         <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" 
                            target="_blank" 
-                           style="colour: var(--primary); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: centre; gap: 5px;">
+                           style="color: var(--primary); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px;">
                             <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+        <!-- Fixed home button linking to correct URL -->
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="footer-button">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="#" class="footer-button top" id="topButton">
+            <i class="fas fa-arrow-up"></i> Top
+        </a>
     </div>
 
     <script>
@@ -1127,6 +1198,15 @@
         
         // Initial active state
         document.querySelector('.sidebar-link[href="#autonomous-models"]').classList.add('active');
+        
+        // Top button functionality
+        document.getElementById('topButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>
