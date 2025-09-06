@@ -31,6 +31,10 @@
             --card-gap: 25px;
             --nav-banner-height: 60px;
             
+            /* Warning colors */
+            --warning-red: #ff0000;
+            --warning-glow: #ff3333;
+            
             /* Font Variables */
             --font-heading: 'Orbitron', sans-serif;
             --font-body: 'Exo 2', sans-serif;
@@ -130,6 +134,56 @@
             box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* NEW: Warning Banner */
+        .warning-banner {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1002;
+            background: var(--warning-red);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: default;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px var(--warning-glow);
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: pulseWarning 1.5s infinite;
+            text-transform: uppercase;
+        }
+        
+        @keyframes pulseWarning {
+            0% {
+                box-shadow: 0 0 20px var(--warning-glow);
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 50, 50, 0.9);
+                transform: translateX(-50%) scale(1.08);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--warning-glow);
+                transform: translateX(-50%) scale(1);
+            }
+        }
+        
+        .warning-banner i {
+            font-size: 1.3rem;
+            animation: flashIcon 1.5s infinite;
+        }
+        
+        @keyframes flashIcon {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
         /* Header Styles */
@@ -690,41 +744,13 @@
             .mobile-historical-cards {
                 display: grid;
             }
-        }
-        
-        /* New banner for Imhotep */
-        .banner {
-            background: rgba(2, 136, 209, 0.15);
-            border: 1px solid rgba(2, 136, 209, 0.3);
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--royal-blue), var(--digital-purple));
-        }
-        
-        .banner h2 {
-            color: var(--digital-purple);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.4rem;
-        }
-        
-        .banner p {
-            margin-bottom: 15px;
-            line-height: 1.7;
+            
+            /* Adjust warning banner for mobile */
+            .warning-banner {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+                top: 65px;
+            }
         }
     </style>
 </head>
@@ -736,7 +762,10 @@
         <a href="  https://oeybers-cpu.github.io/  " class="back-button-tab" id="backButton">
             <i class="fas fa-arrow-left"></i> Back to Academic Literacy Home
         </a>
-        <div style="flex-grow: 1;"></div>
+        <!-- NEW: Warning Banner -->
+        <div class="warning-banner">
+            <i class="fas fa-exclamation-triangle"></i> Warning CC
+        </div>
         <a href="https://oeybers-cpu.github.io/contact/  " class="contact-button-tab" id="contactButton">
             <i class="fas fa-envelope"></i> Contact
         </a>
