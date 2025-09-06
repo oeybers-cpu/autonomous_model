@@ -287,8 +287,8 @@
         .epistemology-card {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start; /* Changed from center to flex-start */
+            text-align: left; /* Changed from center to left */
         }
         
         .epistemology-image-container {
@@ -691,6 +691,41 @@
                 display: grid;
             }
         }
+        
+        /* New banner for Imhotep */
+        .banner {
+            background: rgba(2, 136, 209, 0.15);
+            border: 1px solid rgba(2, 136, 209, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--royal-blue), var(--digital-purple));
+        }
+        
+        .banner h2 {
+            color: var(--digital-purple);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .banner p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
@@ -727,6 +762,13 @@
                 <div class="keyword-tab">Disciplinary Approach</div>
             </div>
             <p>This website explores the critical limitations of autonomous models of academic literacy in post-apartheid higher education, particularly within the African context. Our focus is on developing students' capabilities to succeed in disciplines and specific fields of study by moving beyond decontextualised approaches toward context-specific, disciplinary literacy frameworks that acknowledge the social and cultural dimensions of knowledge production.</p>
+        </div>
+        
+        <!-- NEW: Banner with 2 paragraphs about Imhotep -->
+        <div class="banner">
+            <h2><i class="fas fa-landmark"></i> African Intellectual Traditions</h2>
+            <p>Imhotep lived over 4,000 years ago during Egypt's Old Kingdom, specifically around the 27th to 26th century BCE. He held prominent roles in society, serving as chancellor to Pharaoh Djoser and as high priest of the sun god Ra at the sacred city of Heliopolis. His influence extended across both political and religious spheres, making him one of the most revered figures of his time. Widely recognized as a polymath, Imhotep demonstrated exceptional skill and innovation in multiple fields. As the architect of the Step Pyramid at Saqqara—the first monumental stone structure in history—he revolutionized Egyptian architecture. He was also a pioneering physician, often credited as the founder of Egyptian medicine, with his teachings influencing healing practices for centuries.</p>
+            <p>The name Imhotep translates to "He who comes in peace," a reflection of his legacy as a bringer of wisdom, healing, and harmony. His contributions were so profound that he was later deified as the god of medicine and wisdom—one of the few mortals in ancient Egypt to be granted divine status. His enduring legacy continues to symbolize the depth and sophistication of African intellectual traditions. "Imhotep was deified after his death as the god of medicine and wisdom, one of the few mortals to achieve divine status in ancient Egypt."</p>
         </div>
 
         <div class="full-width-card" id="autonomous-models">
