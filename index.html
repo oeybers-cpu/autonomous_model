@@ -283,11 +283,29 @@
             object-position: center;
         }
         
-        /* FIXED: African epistemology image to ensure text is visible */
+        /* FIXED: African epistemology image to be centered in the card */
+        .epistemology-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .epistemology-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
         .epistemology-image {
-            height: 250px !important;
-            object-fit: contain !important;
-            object-position: top !important;
+            max-height: 250px;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .article-card:hover .card-image {
@@ -798,16 +816,20 @@
                 <p>For African students in post-apartheid universities, the 'automated student' ideal demands they suppress their cultural identities to perform academic literacy tasks. This creates profound alienation, as students must become 'robots' who mechanically reproduce dominant academic discourses while disconnecting from their home literacies and indigenous knowledge systems. True academic literacy development requires recognising students as knowledge producers, not just information processors. This complex navigation highlights why a narrow focus on technical skills cannot adequately prepare students for the diverse literacy demands they encounter.</p>
             </div>
 
-            <div class="article-card">
-                <h3><i class="fas fa-robot"></i> Technological Solutions and Limitations</h3>
-                <img src="  https://github.com/oeybers-cpu/autonomous_model/blob/main/1757085895.png?raw=true" alt="Humanoid robot attempting academic tasks" class="card-image">
-                <div class="keyword-tabs">
-                    <div class="keyword-tab">Automation</div>
-                    <div class="keyword-tab">Cultural Disconnect</div>
-                    <div class="keyword-tab">Knowledge Production</div>
+            <div class="article-card epistemology-card">
+                <h3><i class="fas fa-globe-africa"></i> Integrating African Epistemologies</h3>
+                <div class="epistemology-image-container">
+                    <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/african%20epistemology.png?raw=true" 
+                         alt="African epistemology framework showing integration of indigenous knowledge systems" 
+                         class="epistemology-image">
                 </div>
-                <p>This humanoid robot attempting academic tasks symbolises the 'automated student' ideal of the autonomous model - technically proficient but culturally disconnected. Street critiqued this model for treating literacy as a neutral skill set that can be universally applied, ignoring how academic literacy is shaped by power, culture, and discipline-specific practices.</p>
-                <p>In post-apartheid South Africa, this 'robotic' approach fails African students by demanding they abandon cultural identities to perform academic literacy. The illusion of a 'neutral' technical skill set masks how autonomous models privilege Western academic traditions while framing African ways of knowing as deficits. Moving beyond this requires recognising that academic literacy isn't about becoming an 'automated student' but developing as a culturally situated knowledge producer who can navigate multiple epistemological frameworks. Approaches that position academic literacy as a fixed set of skills often overlook the rich diversity of knowledge traditions that can enhance academic discourse.</p>
+                <div class="keyword-tabs">
+                    <div class="keyword-tab">Indigenous Knowledge</div>
+                    <div class="keyword-tab">Inclusion</div>
+                    <div class="keyword-tab">Epistemological Diversity</div>
+                </div>
+                <p>A truly inclusive approach to academic literacy in African contexts must actively integrate indigenous knowledge systems and African ways of knowing into the curriculum. This integration goes beyond superficial cultural references to encompass fundamental epistemological frameworks that recognise multiple ways of constructing and validating knowledge.</p>
+                <p>This approach challenges the dominance of Western academic traditions while maintaining academic rigour, creating spaces where students can draw on their cultural resources as strengths rather than deficits in their academic development. The academic literacies model treats reading and writing as social practices that vary with context, culture, and genre, viewing student writing and learning as issues of epistemology and identity rather than merely skill acquisition or socialisation.</p>
             </div>
         </div>
 
@@ -875,17 +897,15 @@
             </div>
 
             <div class="article-card">
-                <h3><i class="fas fa-globe-africa"></i> Integrating African Epistemologies</h3>
-                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/african%20epistemology.png?raw=true" 
-                     alt="African epistemology framework showing integration of indigenous knowledge systems" 
-                     class="card-image epistemology-image">
+                <h3><i class="fas fa-robot"></i> Technological Solutions and Limitations</h3>
+                <img src="  https://github.com/oeybers-cpu/autonomous_model/blob/main/1757085895.png?raw=true" alt="Humanoid robot attempting academic tasks" class="card-image">
                 <div class="keyword-tabs">
-                    <div class="keyword-tab">Indigenous Knowledge</div>
-                    <div class="keyword-tab">Inclusion</div>
-                    <div class="keyword-tab">Epistemological Diversity</div>
+                    <div class="keyword-tab">Automation</div>
+                    <div class="keyword-tab">Cultural Disconnect</div>
+                    <div class="keyword-tab">Knowledge Production</div>
                 </div>
-                <p>A truly inclusive approach to academic literacy in African contexts must actively integrate indigenous knowledge systems and African ways of knowing into the curriculum. This integration goes beyond superficial cultural references to encompass fundamental epistemological frameworks that recognise multiple ways of constructing and validating knowledge.</p>
-                <p>This approach challenges the dominance of Western academic traditions while maintaining academic rigour, creating spaces where students can draw on their cultural resources as strengths rather than deficits in their academic development. The academic literacies model treats reading and writing as social practices that vary with context, culture, and genre, viewing student writing and learning as issues of epistemology and identity rather than merely skill acquisition or socialisation.</p>
+                <p>This humanoid robot attempting academic tasks symbolises the 'automated student' ideal of the autonomous model - technically proficient but culturally disconnected. Street critiqued this model for treating literacy as a neutral skill set that can be universally applied, ignoring how academic literacy is shaped by power, culture, and discipline-specific practices.</p>
+                <p>In post-apartheid South Africa, this 'robotic' approach fails African students by demanding they abandon cultural identities to perform academic literacy. The illusion of a 'neutral' technical skill set masks how autonomous models privilege Western academic traditions while framing African ways of knowing as deficits. Moving beyond this requires recognising that academic literacy isn't about becoming an 'automated student' but developing as a culturally situated knowledge producer who can navigate multiple epistemological frameworks. Approaches that position academic literacy as a fixed set of skills often overlook the rich diversity of knowledge traditions that can enhance academic discourse.</p>
             </div>
 
             <div class="article-card">
@@ -968,43 +988,3 @@
     </script>
 </body>
 </html>
-```
-
-## ✅ Key Changes Made
-
-### 1. **African Epistemology Image Fix**
-- Added a specific CSS class for the African epistemology image:
-  ```css
-  .epistemology-image {
-      height: 250px !important;
-      object-fit: contain !important;
-      object-position: top !important;
-  }
-  ```
-- Applied this class to the image in the "Integrating African Epistemologies" section:
-  ```html
-  <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/african%20epistemology.png?raw=true" 
-       alt="African epistemology framework showing integration of indigenous knowledge systems" 
-       class="card-image epistemology-image">
-  ```
-- Changed `object-fit` from `cover` to `contain` to ensure the entire image is visible
-- Set `object-position` to `top` to ensure the text at the top of the image is visible
-- Increased the height slightly to 250px to accommodate the new sizing
-
-### 2. **Shrunk Street's Call to Action Section**
-- Significantly reduced the size of the Street article card:
-  ```html
-  <div class="contact-card" style="max-width: 500px; margin: 15px auto;">
-      <h2 style="font-size: 1.1rem; margin-bottom: 10px;"><i class="fas fa-book" style="font-size: 0.9rem;"></i> Key Reading</h2>
-      <div style="font-size: 0.9rem; line-height: 1.4;">
-          <p style="margin-bottom: 8px;"><strong>Challenging autonomous models of literacy: Street's call to action</strong></p>
-          <p style="margin-bottom: 8px; font-size: 0.85rem;">Author: Joanne Larson</p>
-          <p style="margin-bottom: 10px; font-size: 0.85rem;">This review of Street's work highlights how autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations.</p>
-          <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" 
-             target="_blank" 
-             style="color: var(--primary); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px;">
-              <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
-          </a>
-      </div>
-  </div>
- ll text clearly while making the Street article reference more compact and less visually dominant in the layout.
