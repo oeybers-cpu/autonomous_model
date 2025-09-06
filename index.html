@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -282,6 +281,13 @@
             height: 180px !important;
             object-fit: cover;
             object-position: center;
+        }
+        
+        /* FIXED: African epistemology image to ensure text is visible */
+        .epistemology-image {
+            height: 250px !important;
+            object-fit: contain !important;
+            object-position: top !important;
         }
         
         .article-card:hover .card-image {
@@ -870,7 +876,9 @@
 
             <div class="article-card">
                 <h3><i class="fas fa-globe-africa"></i> Integrating African Epistemologies</h3>
-                <img src="  https://img1.wsimg.com/isteam/ip/c3aca0fa-2f8b-4c53-99ed-a288deb61d46/3450e6a4-396d-4975-abd9-470bc5cb8b3a.jpg/  :/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600" alt="Automated assembly line with human oversight" class="card-image">
+                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/african%20epistemology.png?raw=true" 
+                     alt="African epistemology framework showing integration of indigenous knowledge systems" 
+                     class="card-image epistemology-image">
                 <div class="keyword-tabs">
                     <div class="keyword-tab">Indigenous Knowledge</div>
                     <div class="keyword-tab">Inclusion</div>
@@ -904,31 +912,18 @@
             <p>Contemporary research increasingly acknowledges the complex social dimensions of academic communication, highlighting how literacy practices are embedded within broader cultural and institutional frameworks rather than being merely transferable skills. This transformation requires sustained commitment from institutions, faculty, and policymakers to create educational environments that honour both academic rigour and cultural diversity, enabling all students to succeed while maintaining their cultural identities and contributing their unique perspectives to knowledge creation.</p>
         </div>
         
-        <!-- NEW: Street's Call to Action Section -->
-        <div class="full-width-card">
-            <h2><i class="fas fa-book"></i> Recommended Reading</h2>
-            <div class="article-card">
-                <h3><i class="fas fa-bullhorn"></i> Challenging autonomous models of literacy: Street's call to action</h3>
-                <div class="article-content">
-                    <div class="card-text">
-                        <p><strong>Author:</strong> Joanne Larson</p>
-                        <p>This article reviews Brian Street's (1995) book Social Literacies: Critical Approaches to Literacy Development, Ethnography, and Education in light of current debates in literacy and education. The essay discusses Street's analysis of current issues in the field of literacy with specific focus on his definitions of autonomous and ideological models of literacy and how the shift from autonomous to ideological models will transform literacy practices.</p>
-                        <p>The review concludes with a challenge to researchers to think specifically about how Street's work might impact their own research. This seminal work provides critical theoretical grounding for understanding why autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations and cultural contexts.</p>
-                        <div class="citation">
-                            <p><i class="fas fa-quote-left"></i> Street's ideological model of literacy challenges the dominant view of literacy as a neutral set of technical skills, arguing instead that literacy practices are always embedded in social contexts and power relations.</p>
-                        </div>
-                        <div class="article-meta">
-                            <span class="meta-tag">Literacy Theory</span>
-                            <span class="meta-tag">Critical Pedagogy</span>
-                            <span class="meta-tag">Power Relations</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">
-                        <i class="fas fa-download"></i> Download Article
-                    </a>
-                </div>
+        <!-- NEW: Significantly shrunk Street's Call to Action Section -->
+        <div class="contact-card" style="max-width: 500px; margin: 15px auto;">
+            <h2 style="font-size: 1.1rem; margin-bottom: 10px;"><i class="fas fa-book" style="font-size: 0.9rem;"></i> Key Reading</h2>
+            <div style="font-size: 0.9rem; line-height: 1.4;">
+                <p style="margin-bottom: 8px;"><strong>Challenging autonomous models of literacy: Street's call to action</strong></p>
+                <p style="margin-bottom: 8px; font-size: 0.85rem;">Author: Joanne Larson</p>
+                <p style="margin-bottom: 10px; font-size: 0.85rem;">This review of Street's work highlights how autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations.</p>
+                <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" 
+                   target="_blank" 
+                   style="color: var(--primary); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px;">
+                    <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
+                </a>
             </div>
         </div>
     </div>
@@ -974,3 +969,42 @@
 </body>
 </html>
 ```
+
+## ✅ Key Changes Made
+
+### 1. **African Epistemology Image Fix**
+- Added a specific CSS class for the African epistemology image:
+  ```css
+  .epistemology-image {
+      height: 250px !important;
+      object-fit: contain !important;
+      object-position: top !important;
+  }
+  ```
+- Applied this class to the image in the "Integrating African Epistemologies" section:
+  ```html
+  <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/african%20epistemology.png?raw=true" 
+       alt="African epistemology framework showing integration of indigenous knowledge systems" 
+       class="card-image epistemology-image">
+  ```
+- Changed `object-fit` from `cover` to `contain` to ensure the entire image is visible
+- Set `object-position` to `top` to ensure the text at the top of the image is visible
+- Increased the height slightly to 250px to accommodate the new sizing
+
+### 2. **Shrunk Street's Call to Action Section**
+- Significantly reduced the size of the Street article card:
+  ```html
+  <div class="contact-card" style="max-width: 500px; margin: 15px auto;">
+      <h2 style="font-size: 1.1rem; margin-bottom: 10px;"><i class="fas fa-book" style="font-size: 0.9rem;"></i> Key Reading</h2>
+      <div style="font-size: 0.9rem; line-height: 1.4;">
+          <p style="margin-bottom: 8px;"><strong>Challenging autonomous models of literacy: Street's call to action</strong></p>
+          <p style="margin-bottom: 8px; font-size: 0.85rem;">Author: Joanne Larson</p>
+          <p style="margin-bottom: 10px; font-size: 0.85rem;">This review of Street's work highlights how autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations.</p>
+          <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" 
+             target="_blank" 
+             style="color: var(--primary); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px;">
+              <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
+          </a>
+      </div>
+  </div>
+ ll text clearly while making the Street article reference more compact and less visually dominant in the layout.
