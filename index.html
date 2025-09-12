@@ -672,6 +672,11 @@
                         </div>
                         <p>Colonial language policies deliberately privileged European languages while devaluing indigenous knowledge systems, creating enduring linguistic hierarchies in post-colonial education systems.</p>
                         <p>Understanding this historical context is essential for addressing contemporary challenges in academic literacy instruction, particularly in multilingual African contexts where students navigate multiple linguistic worlds.</p>
+                        <!-- Moved image to this card -->
+                        <img src="https://www.ipsnews.net/Library/2014/05/tapestry.jpg" 
+                             alt="Tapestry illustrating diverse threads woven together representing collaborative learning" 
+                             class="collaborative-image">
+                        <p>This collaborative model emphasizes the importance of weaving together diverse perspectives and knowledge systems, much like the threads in a tapestry, to create a richer and more inclusive academic environment.</p>
                     </div>
                     <div class="article-card">
                         <h3><i class="fas fa-handshake"></i> Collaborative Learning Models</h3>
@@ -683,11 +688,6 @@
                         </div>
                         <p>Alternative models position academic literacy as situated within disciplinary practices, requiring integration with subject-specific content rather than separation from it.</p>
                         <p>These approaches recognize that language and knowledge are co-constructed within disciplinary communities, requiring students to learn both the content and the discourse practices simultaneously.</p>
-                        <!-- Moved image here -->
-                        <img src="https://www.ipsnews.net/Library/2014/05/tapestry.jpg" 
-                             alt="Tapestry illustrating diverse threads woven together representing collaborative learning" 
-                             class="collaborative-image">
-                        <p>This collaborative model emphasizes the importance of weaving together diverse perspectives and knowledge systems, much like the threads in a tapestry, to create a richer and more inclusive academic environment.</p>
                     </div>
                 </div>
             </div>
@@ -765,7 +765,7 @@
             const observerOptions = {
                 threshold: 0.2,
                 rootMargin: '-100px 0px -50% 0px'
-            };
+            }
             // Updated sections list to remove disciplinary approach
             const sections = document.querySelectorAll('#introduction-section, #autonomous-models-section, #colonial-legacy-section');
             const observer = new IntersectionObserver((entries) => {
